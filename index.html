@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrollable Fullscreen Pages</title>
+    <title>Nicolas Theofani Wedding Invitation</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ovo&display=swap" rel="stylesheet" />
   </head>
   <body>
     <!-- Page 1 -->
-    <section class="page page1">
-      <h1>Page 1</h1>
-      <p>This is page 1 content.</p>
-      <p>Keep scrolling to go to page 2...</p>
+    <section class="page page1" id="carousel">
+      <p>THE WEDDING OF</p>
+      <h1>Nicolas Theofani</h1>
+      <p>TUESDAY, 08 JULY 2025</p>
     </section>
 
     <!-- Page 2 -->
@@ -27,4 +30,18 @@
       <p>You can add more pages as needed.</p>
     </section>
   </body>
+
+  <script>
+    const images = ["https://assets.apps-madhani.com/ess/user/yXhf80.jpeg", "https://assets.apps-madhani.com/ess/user/yXhf60.jpg", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+
+    let current = 0;
+    const carousel = document.getElementById("carousel");
+
+    function changeBackground() {
+      current = (current + 1) % images.length;
+      carousel.style.backgroundImage = `url("${images[current]}")`;
+    }
+
+    setInterval(changeBackground, 4000); // change every 4 seconds
+  </script>
 </html>

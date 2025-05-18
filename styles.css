@@ -8,7 +8,7 @@
 body,
 html {
   height: 100%;
-  font-family: Arial, sans-serif;
+  font-family: "Ovo", serif;
   scroll-behavior: smooth;
 }
 
@@ -20,18 +20,51 @@ html {
   justify-content: center;
 }
 
-/* Optional: background colors for each page */
 .page1 {
   background-image: url("https://assets.apps-madhani.com/ess/user/yXhf594.jpg");
+  transition: background-image 1s ease;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 5rem;
   background-size: cover;
+  filter: brightness(70%);
+  color: white;
 }
+
 .page2 {
-  background-image: url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
-  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
 }
+.page2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg") center/cover no-repeat;
+  filter: brightness(70%);
+  z-index: 0;
+}
+.page2 > * {
+  position: relative;
+  z-index: 1;
+}
+
 .page3 {
   background-image: url("https://assets.apps-madhani.com/ess/user/yXhf603.jpg");
   background-size: cover;
+  filter: brightness(70%);
 }
 
 /* Responsive text */
