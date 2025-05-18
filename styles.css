@@ -1,0 +1,46 @@
+/* Reset and basic styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.page {
+  min-height: 100vh; /* Fill full screen */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Optional: background colors for each page */
+.page1 {
+  background-image: url("https://assets.apps-madhani.com/ess/user/yXhf594.jpg");
+  background-size: cover;
+}
+.page2 {
+  background-image: url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+}
+.page3 {
+  background-image: url("https://assets.apps-madhani.com/ess/user/yXhf603.jpg");
+  background-size: cover;
+}
+
+/* Responsive text */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
