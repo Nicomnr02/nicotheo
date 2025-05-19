@@ -46,42 +46,77 @@
 
   /* PAGE 0 */
   {
-    const page0 = document.getElementById('intro')
-    function preventScroll(e) {
-      e.preventDefault();
+    {
+      const page0 = document.getElementById('intro');
+
+      function preventScroll(e) {
+        e.preventDefault();
+      }
+      page0.addEventListener('wheel', preventScroll, { passive: false });
+      page0.addEventListener('touchmove', preventScroll, { passive: false });
+
+      const carouselImagePage0 = [
+        "https://assets.apps-madhani.com/ess/user/yXhf80.jpeg",
+        "https://assets.apps-madhani.com/ess/user/yXhf60.jpg",
+        "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"
+      ];
+
+      // Preload images function
+      function preloadImages(urls, callback) {
+        let loadedCount = 0;
+        const total = urls.length;
+        urls.forEach((url) => {
+          const img = new Image();
+          img.src = url;
+          img.onload = () => {
+            loadedCount++;
+            if (loadedCount === total) {
+              callback();
+            }
+          };
+          img.onerror = () => {
+            // Even if image fails, count it to avoid blocking
+            loadedCount++;
+            if (loadedCount === total) {
+              callback();
+            }
+          };
+        });
+      }
+
+      // Start everything after images are preloaded
+      preloadImages(carouselImagePage0, () => {
+        let cp2starting = 0;
+        const carouselPage0 = document.getElementById("carousel-page-0");
+
+        function playCarouselImagePage0() {
+          cp2starting = (cp2starting + 1) % carouselImagePage0.length;
+          carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
+        }
+
+        // Start carousel
+        setInterval(playCarouselImagePage0, 100);
+
+        // Start loading percentage
+        let percent = 0;
+        const loadingText = document.getElementById('page0-loading-text');
+
+        const interval = setInterval(() => {
+          percent++;
+          loadingText.textContent = `${percent}%`;
+          if (percent === 100) clearInterval(interval);
+        }, 50);
+
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            page0.classList.add('page0-hidden');
+            setTimeout(() => {
+              page0.style.display = 'none';
+            }, 1000);
+          }, 6000);
+        });
+      });
     }
-    page0.addEventListener('wheel', preventScroll, { passive: false });
-    page0.addEventListener('touchmove', preventScroll, { passive: false });
-
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        page0.classList.add('page0-hidden');
-
-        setTimeout(() => {
-          page0.style.display = 'none';
-        }, 1000);
-      }, 7000);
-    });
-
-
-    const carouselImagePage0 = ["https://assets.apps-madhani.com/ess/user/yXhf80.jpeg", "https://assets.apps-madhani.com/ess/user/yXhf60.jpg", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
-    let cp2starting = 0;
-    const carouselPage0 = document.getElementById("carousel-page-0");
-    function playCarouselImagePage0() {
-      cp2starting = (cp2starting + 1) % carouselImagePage0.length;
-      carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
-    }
-    setInterval(playCarouselImagePage0, 100);
-
-
-    let percent = 0;
-    const loadingText = document.getElementById('page0-loading-text');
-
-    const interval = setInterval(() => {
-      percent++;
-      loadingText.textContent = `${percent}%`;
-      if (percent === 100) clearInterval(interval);
-    }, 50);
   }
 
   /* PAGE 1 */
