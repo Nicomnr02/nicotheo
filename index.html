@@ -44,6 +44,14 @@
 
 <script>
 
+  /* BEHAVIORS */
+  window.addEventListener('load', () => {
+    const element = document.getElementById('intro');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
   /* PAGE 0 */
   {
     {
