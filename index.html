@@ -1,47 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nicolas Theofani Wedding Invitation</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Ovo&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Page 1 -->
-    <section class="page page1" id="carousel">
-      <p>THE WEDDING OF</p>
-      <h1>Nicolas Theofani</h1>
-      <p>TUESDAY, 08 JULY 2025</p>
-    </section>
 
-    <!-- Page 2 -->
-    <section class="page page2">
-      <h1>Page 2</h1>
-      <p>This is page 2 content.</p>
-      <p>More content here...</p>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicolas & Theofani Wedding Invitation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ovo&display=swap" rel="stylesheet" />
+</head>
 
-    <!-- Page 3 (optional) -->
-    <section class="page page3">
-      <h1>Page 3</h1>
-      <p>You can add more pages as needed.</p>
-    </section>
-  </body>
+<body>
+  <!-- Intro Page -->
+  <section class="no-scroll page0" id="intro">
+    <p>THE WEDDING OF</p>
+    <div class="page0-image-spinner" id="carousel-page-0"></div>
+    <p>NICOLAS & THEOFANI</p>
+    <p id="page0-loading-text">0%</p>
+  </section>
 
-  <script>
-    const images = ["https://assets.apps-madhani.com/ess/user/yXhf80.jpeg", "https://assets.apps-madhani.com/ess/user/yXhf60.jpg", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+  <!-- Page 1 -->
+  <section class="page page1" id="carousel-page-1">
+    <p>THE WEDDING OF</p>
+    <h1>Nicolas & Theofani</h1>
+    <p>TUESDAY, 08 JULY 2025</p>
+    <br></br>
+  </section>
 
-    let current = 0;
-    const carousel = document.getElementById("carousel");
+  <!-- Page 2 -->
+  <section class="page page2">
+    <h1>Page 2</h1>
+    <p>This is page 2 content.</p>
+    <p>More content here...</p>
+  </section>
 
-    function changeBackground() {
-      current = (current + 1) % images.length;
-      carousel.style.backgroundImage = `url("${images[current]}")`;
+  <!-- Page 3 (optional) -->
+  <section class="page page3">
+    <h1>Page 3</h1>
+    <p>You can add more pages as needed.</p>
+  </section>
+</body>
+
+<script>
+
+  /* PAGE 0 */
+  {
+    const page0 = document.getElementById('intro')
+    function preventScroll(e) {
+      e.preventDefault();
     }
+    page0.addEventListener('wheel', preventScroll, { passive: false });
+    page0.addEventListener('touchmove', preventScroll, { passive: false });
 
-    setInterval(changeBackground, 4000); // change every 4 seconds
-  </script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        page0.classList.add('page0-hidden');
+
+        setTimeout(() => {
+          page0.style.display = 'none';
+        }, 1000);
+      }, 7000);
+    });
+
+
+    const carouselImagePage0 = ["https://assets.apps-madhani.com/ess/user/yXhf80.jpeg", "https://assets.apps-madhani.com/ess/user/yXhf60.jpg", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+    let cp2starting = 0;
+    const carouselPage0 = document.getElementById("carousel-page-0");
+    function playCarouselImagePage0() {
+      cp2starting = (cp2starting + 1) % carouselImagePage0.length;
+      carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
+    }
+    setInterval(playCarouselImagePage0, 100);
+
+
+    let percent = 0;
+    const loadingText = document.getElementById('page0-loading-text');
+
+    const interval = setInterval(() => {
+      percent++;
+      loadingText.textContent = `${percent}%`;
+      if (percent === 100) clearInterval(interval);
+    }, 50);
+  }
+
+  /* PAGE 1 */
+  const carouselImagePage1 = ["https://assets.apps-madhani.com/ess/user/yXhf80.jpeg", "https://assets.apps-madhani.com/ess/user/yXhf60.jpg", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+  let cp1starting = 0;
+  const carouselPage1 = document.getElementById("carousel-page-1");
+  function playCarouselImagePage1() {
+    cp1starting = (cp1starting + 1) % carouselImagePage1.length;
+    carouselPage1.style.backgroundImage = `url("${carouselImagePage1[cp1starting]}")`;
+  }
+  setInterval(playCarouselImagePage1, 4000);
+
+
+
+</script>
+
+
+</body>
+
 </html>
