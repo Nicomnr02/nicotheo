@@ -23,9 +23,9 @@
   <!-- Page 1 -->
   <section class="page page1" id="carousel-page-1">
     <div class="page1-header">
-      <p>THE WEDDING OF</p>
-      <h1>Nicolas & Theofani</h1>
-      <p>TUESDAY, 08 JULY 2025</p>
+      <p class="page1-header-1">THE WEDDING OF</p>
+      <h1 class="page1-header-2">Nicolas & Theofani</h1>
+      <p class="page1-header-3">TUESDAY, 08 JULY 2025</p>
     </div>
 
     <div class="page1-footer">
@@ -101,7 +101,6 @@
       });
     }
 
-    // Start everything after images are preloaded
     preloadImages(carouselImagePage0, () => {
       let cp2starting = 0;
       const carouselPage0 = document.getElementById("carousel-page-0");
@@ -110,11 +109,8 @@
         cp2starting = (cp2starting + 1) % carouselImagePage0.length;
         carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
       }
-
-      // Start carousel
       setInterval(playCarouselImagePage0, 100);
 
-      // Start loading percentage
       let percent = 0;
       const loadingText = document.getElementById('page0-loading-text');
 

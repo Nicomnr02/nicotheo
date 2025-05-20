@@ -63,9 +63,7 @@ html {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: 5rem;
   background-size: cover;
-  filter: brightness(80%);
   color: white;
   width: 100%;
   justify-content: space-around;
@@ -74,6 +72,19 @@ html {
 
 .page1-header {
   color: white;
+  margin-top: -3rem;
+}
+
+.page1-header-1 {
+  font-size: small;
+}
+
+.page1-header-2 {
+  font-size: x-large;
+}
+
+.page1-header-3 {
+  font-size: small;
 }
 
 .page1-footer {
@@ -81,6 +92,10 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+.page1-footer-guest-name {
+  font-size: larger;
 }
 
 .page1-footer-guest-misspell-apologize {
@@ -95,7 +110,7 @@ html {
   color: black;
   border: none;
   cursor: pointer;
-  animation: heartbeat 3s infinite;
+  animation: heartbeat 5s infinite;
 }
 @keyframes heartbeat {
   0%,
