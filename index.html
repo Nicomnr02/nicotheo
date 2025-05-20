@@ -26,6 +26,8 @@
     <h1>Nicolas & Theofani</h1>
     <p>TUESDAY, 08 JULY 2025</p>
     <br></br>
+    <h2 id="page1-guest-name">Dear, </h2>
+    <p>We apologize if there is any misspelling of name or title.</p>
   </section>
 
   <!-- Page 2 -->
@@ -133,9 +135,7 @@
     let cp1starting = 0;
     const carouselPage1 = document.getElementById("carousel-page-1");
     function playCarouselImagePage1() {
-      // Fade out
       carouselPage1.style.opacity = 0;
-
       setTimeout(() => {
         cp1starting = (cp1starting + 1) % carouselImagePage1.length;
         carouselPage1.style.backgroundImage = `url("${carouselImagePage1[cp1starting]}")`;
@@ -143,9 +143,20 @@
       }, 1000);
     }
     setInterval(playCarouselImagePage1, 5000);
+
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramGuestName = urlParams.get('guest_name');
+    const _paramGuestName = paramGuestName.split("_")
+    if (_paramGuestName.length == 1) {
+      guestName = _paramGuestName[0] + " & " + "Partner"
+    } else {
+      guestName = _paramGuestName.join(" & ")
+    }
+
+    const myDiv = document.getElementById('page1-guest-name');
+    myDiv.textContent = "Dear, " + guestName;
   }
-
-
 
 </script>
 
