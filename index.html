@@ -22,12 +22,19 @@
 
   <!-- Page 1 -->
   <section class="page page1" id="carousel-page-1">
-    <p>THE WEDDING OF</p>
-    <h1>Nicolas & Theofani</h1>
-    <p>TUESDAY, 08 JULY 2025</p>
-    <br></br>
-    <h2 id="page1-guest-name">Dear, </h2>
-    <p>We apologize if there is any misspelling of name or title.</p>
+    <div class="page1-header">
+      <p>THE WEDDING OF</p>
+      <h1>Nicolas & Theofani</h1>
+      <p>TUESDAY, 08 JULY 2025</p>
+    </div>
+
+    <div class="page1-footer">
+      <h2 id="page1-footer-guest-name" class="page1-footer-guest-name">Dear, </h2>
+      <p class="page1-footer-guest-misspell-apologize" id="page1-footer-guest-misspell-apologize">We apologize if there
+        is any misspelling of name or title.</p>
+      <button class="page1-footer-heartbeat-button" id="page1-footer-heartbeat-button">LET'S OPEN</button>
+      <audio id="page1-footer-audio-player" preload="auto"></audio>
+    </div>
   </section>
 
   <!-- Page 2 -->
@@ -54,79 +61,78 @@
     }
   });
 
+  function preventScroll(e) {
+    e.preventDefault();
+  };
+  window.addEventListener('wheel', preventScroll, { passive: false });
+  window.addEventListener('touchmove', preventScroll, { passive: false });
+
   /* PAGE 0 */
   {
-    {
-      const page0 = document.getElementById('intro');
 
-      function preventScroll(e) {
-        e.preventDefault();
-      }
-      page0.addEventListener('wheel', preventScroll, { passive: false });
-      page0.addEventListener('touchmove', preventScroll, { passive: false });
+    const page0 = document.getElementById('intro');
 
-      const carouselImagePage0 = [
-        "https://assets.apps-madhani.com/ess/user/yXhf80.jpeg",
-        "https://assets.apps-madhani.com/ess/user/yXhf60.jpg",
-        "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"
-      ];
+    const carouselImagePage0 = [
+      "https://assets.apps-madhani.com/ess/user/yXhf80.jpeg",
+      "https://assets.apps-madhani.com/ess/user/yXhf60.jpg",
+      "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"
+    ];
 
-      // Preload images function
-      function preloadImages(urls, callback) {
-        let loadedCount = 0;
-        const total = urls.length;
-        urls.forEach((url) => {
-          const img = new Image();
-          img.src = url;
-          img.onload = () => {
-            loadedCount++;
-            if (loadedCount === total) {
-              callback();
-            }
-          };
-          img.onerror = () => {
-            // Even if image fails, count it to avoid blocking
-            loadedCount++;
-            if (loadedCount === total) {
-              callback();
-            }
-          };
-        });
-      }
-
-      // Start everything after images are preloaded
-      preloadImages(carouselImagePage0, () => {
-        let cp2starting = 0;
-        const carouselPage0 = document.getElementById("carousel-page-0");
-
-        function playCarouselImagePage0() {
-          cp2starting = (cp2starting + 1) % carouselImagePage0.length;
-          carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
-        }
-
-        // Start carousel
-        setInterval(playCarouselImagePage0, 100);
-
-        // Start loading percentage
-        let percent = 0;
-        const loadingText = document.getElementById('page0-loading-text');
-
-        const interval = setInterval(() => {
-          percent++;
-          loadingText.textContent = `${percent}%`;
-          if (percent === 100) clearInterval(interval);
-        }, 50);
-
-        window.addEventListener('load', () => {
-          setTimeout(() => {
-            page0.classList.add('page0-hidden');
-            setTimeout(() => {
-              page0.style.display = 'none';
-            }, 1000);
-          }, 6000);
-        });
+    // Preload images function
+    function preloadImages(urls, callback) {
+      let loadedCount = 0;
+      const total = urls.length;
+      urls.forEach((url) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+          loadedCount++;
+          if (loadedCount === total) {
+            callback();
+          }
+        };
+        img.onerror = () => {
+          // Even if image fails, count it to avoid blocking
+          loadedCount++;
+          if (loadedCount === total) {
+            callback();
+          }
+        };
       });
     }
+
+    // Start everything after images are preloaded
+    preloadImages(carouselImagePage0, () => {
+      let cp2starting = 0;
+      const carouselPage0 = document.getElementById("carousel-page-0");
+
+      function playCarouselImagePage0() {
+        cp2starting = (cp2starting + 1) % carouselImagePage0.length;
+        carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
+      }
+
+      // Start carousel
+      setInterval(playCarouselImagePage0, 100);
+
+      // Start loading percentage
+      let percent = 0;
+      const loadingText = document.getElementById('page0-loading-text');
+
+      const interval = setInterval(() => {
+        percent++;
+        loadingText.textContent = `${percent}%`;
+        if (percent === 100) clearInterval(interval);
+      }, 50);
+
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          page0.classList.add('page0-hidden');
+          setTimeout(() => {
+            page0.style.display = 'none';
+          }, 1000);
+        }, 6000);
+      });
+    });
   }
 
   /* PAGE 1 */
@@ -138,7 +144,7 @@
       carouselPage1.style.opacity = 0;
       setTimeout(() => {
         cp1starting = (cp1starting + 1) % carouselImagePage1.length;
-        carouselPage1.style.backgroundImage = `url("${carouselImagePage1[cp1starting]}")`;
+        carouselPage1.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 90%), url("${carouselImagePage1[cp1starting]}")`;
         carouselPage1.style.opacity = 1;
       }, 1000);
     }
@@ -153,9 +159,24 @@
     } else {
       guestName = _paramGuestName.join(" & ")
     }
-
-    const myDiv = document.getElementById('page1-guest-name');
+    const myDiv = document.getElementById('page1-footer-guest-name');
     myDiv.textContent = "Dear, " + guestName;
+
+
+    const button = document.getElementById('page1-footer-heartbeat-button');
+    function enableScrollOnce() {
+      button.disabled = true;
+      button.textContent = 'Scroll Down';
+      window.removeEventListener('wheel', preventScroll, { passive: false });
+      window.removeEventListener('touchmove', preventScroll, { passive: false });
+
+      const audioPlayer = document.getElementById('page1-footer-audio-player');
+      audioPlayer.src = "https://github.com/Nicomnr02/nicotheo/raw/refs/heads/master/Household%20of%20Faith%20-%20Winner%20and%20Shen%20THE%20ASIDORS%202022%20COVERS%20Christian%20Wedding%20Song%20(1).mp3";
+      audioPlayer.play();
+      window.scrollBy(0, 100);
+    }
+    button.addEventListener('click', enableScrollOnce);
+
   }
 
 </script>

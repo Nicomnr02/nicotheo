@@ -12,6 +12,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
+  scroll-snap-type: y mandatory;
 }
 
 .page {
@@ -57,14 +58,52 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   text-align: center;
   padding-top: 5rem;
   background-size: cover;
   filter: brightness(80%);
   color: white;
+  width: 100%;
+  justify-content: space-around;
+  scroll-snap-align: start;
+}
+
+.page1-header {
+  color: white;
+}
+
+.page1-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page1-footer-guest-misspell-apologize {
+  font-size: x-small;
+}
+
+.page1-footer-heartbeat-button {
+  width: 50%;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.5rem;
+  background-color: whitesmoke;
+  color: black;
+  border: none;
+  cursor: pointer;
+  animation: heartbeat 3s infinite;
+}
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(1.2); /* Grow slightly */
+  }
 }
 
 .page2 {
@@ -78,6 +117,7 @@ html {
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 .page2::before {
   content: "";
@@ -96,6 +136,7 @@ html {
   background-image: url("https://assets.apps-madhani.com/ess/user/yXhf603.jpg");
   background-size: cover;
   filter: brightness(80%);
+  scroll-snap-align: start;
 }
 
 /* Responsive text */
