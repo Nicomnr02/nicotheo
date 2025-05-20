@@ -34,6 +34,7 @@ html {
   align-items: center;
   gap: 3vh;
   color: white;
+  scroll-snap-align: start;
 }
 
 .page0-hidden {
