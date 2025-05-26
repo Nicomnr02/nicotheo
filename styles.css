@@ -8,11 +8,12 @@
 body,
 html {
   height: 100%;
-  font-family: "Ovo", serif;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
   scroll-snap-type: y mandatory;
+  font-family: "Cormorant", serif;
+  font-optical-sizing: auto;
 }
 
 .fade-in {
@@ -169,10 +170,83 @@ html {
 }
 
 .page3 {
-  background-image: url("https://assets.apps-madhani.com/ess/user/yXhf603.jpg");
-  background-size: cover;
-  filter: brightness(80%);
   scroll-snap-align: start;
+  background-size: cover;
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+  color: white;
+  justify-content: end;
+  gap: 1.5rem;
+}
+.page3-groom-name {
+  font-size: xx-large;
+}
+.page3-groom-son-of {
+  font-family: "Whisper", cursive;
+  font-size: large;
+}
+.page3-groom-description {
+  align-items: center;
+  font-size: small;
+  line-height: 1.5;
+}
+.page3-groom-instagram-link {
+  background-color: dimgrey;
+  padding: 0.5rem 0.5rem;
+  width: 30%;
+  align-items: center;
+}
+.page3-groom-instagram-link-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  color: white;
+}
+.page3-groom-instagram-link-label-text {
+  font-size: small;
+}
+
+.page4 {
+  scroll-snap-align: start;
+  background-size: cover;
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+  color: white;
+  justify-content: end;
+  gap: 1.5rem;
+}
+.page4-bride-name {
+  font-size: xx-large;
+}
+.page4-bride-son-of {
+  font-family: "Whisper", cursive;
+  font-size: large;
+}
+.page4-bride-description {
+  align-items: center;
+  font-size: small;
+  line-height: 1.5;
+}
+.page4-bride-instagram-link {
+  background-color: dimgrey;
+  padding: 0.5rem 0.5rem;
+  width: 30%;
+  align-items: center;
+}
+.page4-bride-instagram-link-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  color: white;
+}
+.page4-bride-instagram-link-label-text {
+  font-size: small;
 }
 
 /* Responsive text */

@@ -25,9 +25,7 @@ function Fade(id) {
           setTimeout(() => {
             container.classList.remove("fade-out");
             container.classList.add("fade-in");
-          }, 1000);
-
-          observer.unobserve(container);
+          }, 500);
         }
       });
     },
@@ -109,7 +107,7 @@ function Fade(id) {
       cp1starting = (cp1starting + 1) % carouselImagePage1.length;
       carouselPage1.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 90%), url("${carouselImagePage1[cp1starting]}")`;
       carouselPage1.style.opacity = 1;
-    }, 1000);
+    }, 500);
   }
   setInterval(playCarouselImagePage1, 5000);
 
@@ -141,4 +139,22 @@ function Fade(id) {
 /* PAGE 2 */
 {
   Fade("page2-bible-quotation-chapter-fade-target");
+}
+
+/* PAGE 3 */
+{
+  Fade("page3-groom-fade-target1");
+  Fade("page3-groom-fade-target2");
+  Fade("page3-groom-fade-target3");
+  Fade("page3-groom-fade-target4");
+  Fade("page3-groom-fade-target5");
+}
+
+/* PAGE 4 */
+{
+  Fade("page4-groom-fade-target1");
+  Fade("page4-groom-fade-target2");
+  Fade("page4-groom-fade-target3");
+  Fade("page4-groom-fade-target4");
+  Fade("page4-groom-fade-target5");
 }
