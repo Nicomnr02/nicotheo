@@ -264,6 +264,59 @@ html {
   text-align: justify;
 }
 
+.page6 {
+  scroll-snap-align: start;
+  background-size: cover;
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.page6-save-our-date{
+  font-size: small;
+}
+.page6-header {
+  text-align: center;
+  align-items: center;
+}
+.page6-flower-icon {
+  display: flex;
+  width: 20%;
+  height: 2vh;
+  align-items: center;
+}
+.page6-content1{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.page6-content2{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.page6-location-detail {
+  text-align: center;
+}
+.page6-google-maps {
+  background-color: #888888;
+  color: white;
+  font-family: "Georgia", serif;
+  font-size: small;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
 /* Responsive text */
 h1 {
   font-size: 2rem;
