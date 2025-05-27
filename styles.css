@@ -275,7 +275,7 @@ html {
   align-items: center;
   gap: 2rem;
 }
-.page6-save-our-date{
+.page6-save-our-date {
   font-size: small;
 }
 .page6-header {
@@ -288,13 +288,13 @@ html {
   height: 2vh;
   align-items: center;
 }
-.page6-content1{
+.page6-content1 {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 0.2rem;
 }
-.page6-content2{
+.page6-content2 {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -304,6 +304,55 @@ html {
   text-align: center;
 }
 .page6-google-maps {
+  background-color: #888888;
+  color: white;
+  font-family: "Georgia", serif;
+  font-size: small;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.page7 {
+  scroll-snap-align: start;
+  background-size: cover;
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.page7-header {
+  text-align: center;
+}
+.page7-celebration-countdown {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  text-align: center;
+}
+.page7-celebration-countdown-days,
+.page7-celebration-countdown-hours,
+.page7-celebration-countdown-minutes,
+.page7-celebration-countdown-seconds {
+  display: flex;
+  flex-direction: column;
+}
+.page7-celebration-countdown-text {
+  font-size: small;
+  text-align: center;
+}
+.page7-celebration-countdown-number {
+  font-size: 2em;
+  text-align: center;
+}
+.page7-save-the-date {
   background-color: #888888;
   color: white;
   font-family: "Georgia", serif;

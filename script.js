@@ -165,3 +165,65 @@ function Fade(id) {
   Fade("page5-content-fade-target2");
   Fade("page5-content-fade-target3");
 }
+
+/* PAGE 7 */
+{
+  const targetDate = new Date("2025-07-08T09:00:00");
+
+  function updateCountdown() {
+    const now = new Date();
+    const timeDiff = targetDate - now;
+
+    if (timeDiff <= 0) {
+      document.getElementById("countdown").textContent = "The event has started!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+    const seconds = Math.floor((timeDiff / 1000) % 60);
+
+    document.getElementById("page7-celebration-countdown-days").textContent = `${days}`;
+    document.getElementById("page7-celebration-countdown-hours").textContent = `${hours}`;
+    document.getElementById("page7-celebration-countdown-minutes").textContent = `${minutes}`;
+    document.getElementById("page7-celebration-countdown-seconds").textContent = `${seconds}`;
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+
+  //ics file
+  function downloadICS() {
+    const title = "Nicolas & Theofani Wedding Celebration";
+    const description = "Join us for our special day!";
+    const location = "Tanjungbalai Asahan, Sumatera Utara";
+    const startDate = "20250708T000000Z";
+    const endDate = "20250708T130000Z";
+
+    const icsContent = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//YourOrganization//EN",
+      "BEGIN:VEVENT",
+      "UID:" + new Date().getTime() + "@nicotheoweddinginvitation.netlify.app",
+      "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z",
+      "DTSTART:" + startDate,
+      "DTEND:" + endDate,
+      "SUMMARY:" + title,
+      "DESCRIPTION:" + description,
+      "LOCATION:" + location,
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ].join("\r\n");
+
+    const blob = new Blob([icsContent], { type: "text/calendar" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "nicotheoweddingcelebrationday.ics";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+}
