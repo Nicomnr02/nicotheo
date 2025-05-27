@@ -248,6 +248,22 @@ html {
   font-size: small;
 }
 
+.page5 {
+  scroll-snap-align: start;
+  background-size: cover;
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+  color: white;
+  justify-content: end;
+  gap: 1.5rem;
+}
+
+.page5-journey {
+  font-size: medium;
+  text-align: justify;
+}
+
 /* Responsive text */
 h1 {
   font-size: 2rem;

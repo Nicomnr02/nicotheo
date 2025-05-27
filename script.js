@@ -158,3 +158,10 @@ function Fade(id) {
   Fade("page4-groom-fade-target4");
   Fade("page4-groom-fade-target5");
 }
+
+/* PAGE 5 */
+{
+  Fade("page5-content-fade-target1");
+  Fade("page5-content-fade-target2");
+  Fade("page5-content-fade-target3");
+}
