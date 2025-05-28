@@ -256,8 +256,8 @@ html {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
   background-size: cover;
   color: white;
-  justify-content: center;
-  gap: 1.5rem;
+  justify-content: start;
+  gap: 0.5rem;
 }
 
 .page5-journey {
