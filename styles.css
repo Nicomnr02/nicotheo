@@ -35,7 +35,6 @@ html {
 .page0 {
   background-color: black;
   transition: opacity 1s ease;
-  min-height: 100vh;
   padding: 2rem;
   display: flex;
   justify-content: center;
