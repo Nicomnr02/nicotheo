@@ -256,11 +256,86 @@ function Fade(id) {
 
     const _ = await response.json();
 
-    
-
     submitButton.disabled = true;
     submitButton.textContent = "SUBMITTED";
 
     document.getElementById("wishForm").reset();
   });
+}
+
+/* Page 9 */
+
+let wishes = [];
+let currentPage = 0;
+const pageSize = 3;
+
+const wishesContainer = document.getElementById("wishesContainer");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+async function fetchWishes() {
+  console.log("Fetching wishes...");
+  try {
+    const res = await fetch("https://68370b61664e72d28e4343a2.mockapi.io/api/v1/wish");
+    wishes = (await res.json()).reverse(); // Most recent first
+    console.log("Fetched wishes:", wishes);
+    renderPage();
+  } catch (err) {
+    wishesContainer.innerHTML = "<p style='color: red;'>Failed to load wishes.</p>";
+    console.error("Error fetching wishes:", err);
+  }
+}
+
+function renderPage() {
+  wishesContainer.innerHTML = "";
+  const start = currentPage * pageSize;
+  const end = start + pageSize;
+  const currentItems = wishes.slice(start, end);
+
+  currentItems.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = `wish-card ${index % 2 === 0 ? "left" : "right"}`;
+    card.innerHTML = `
+      <h3>${item.name}</h3>
+      <p>${item.wish}</p>
+      <small>${new Date(item.created_at * 1000).toLocaleString()}</small>
+    `;
+    wishesContainer.appendChild(card);
+  });
+
+  prevBtn.disabled = currentPage === 0;
+  nextBtn.disabled = end >= wishes.length;
+}
+
+prevBtn.addEventListener("click", () => {
+  if (currentPage > 0) {
+    currentPage--;
+    renderPage();
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if ((currentPage + 1) * pageSize < wishes.length) {
+    currentPage++;
+    renderPage();
+  }
+});
+
+window.addEventListener("DOMContentLoaded", fetchWishes);
+
+{
+  const wishesPage = document.querySelector(".page9");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          fetchWishes();
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(wishesPage);
 }
