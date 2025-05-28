@@ -366,6 +366,58 @@ html {
   text-decoration: none;
 }
 
+.page8 {
+  scroll-snap-align: start;
+  background-size: cover;
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+  color: white;
+  justify-content: start;
+  gap: 2rem;
+}
+.page8-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  color: white;
+  font-size: 1rem;
+}
+input[type="text"]:focus,
+textarea:focus {
+  border-color: white;
+  outline: none;
+}
+input[type="text"]:not(:placeholder-shown),
+textarea:not(:placeholder-shown) {
+  border-color: white;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #444;
+  border: none;
+  color: white;
+  font-weight: lighter;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 /* Responsive text */
 h1 {
   font-size: 2rem;

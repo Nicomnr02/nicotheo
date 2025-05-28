@@ -227,3 +227,40 @@ function Fade(id) {
     document.body.removeChild(link);
   }
 }
+
+/* PAGE 8 */
+{
+  document.getElementById("wishForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const wish = document.getElementById("wish").value.trim();
+    const created_at = Math.floor(Date.now() / 1000);
+    const submitButton = this.querySelector("button");
+
+    const jsonData = {
+      name,
+      wish,
+      created_at,
+    };
+
+    const response = await fetch("https://68370b61664e72d28e4343a2.mockapi.io/api/v1/wish", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jsonData),
+    });
+
+    if (!response.ok) throw new Error("Failed to submit");
+
+    const _ = await response.json();
+
+    
+
+    submitButton.disabled = true;
+    submitButton.textContent = "SUBMITTED";
+
+    document.getElementById("wishForm").reset();
+  });
+}
