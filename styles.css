@@ -175,7 +175,7 @@ html {
   background-size: cover;
   color: white;
   justify-content: end;
-  gap: 1.5rem;
+  gap: 1.0rem;
 }
 .page3-groom-name {
   font-size: xx-large;
@@ -191,6 +191,7 @@ html {
 }
 .page3-groom-instagram-link {
   background-color: dimgrey;
+  margin-bottom: 1.5rem;
   padding: 0.5rem 0.5rem;
   width: 30%;
   align-items: center;
@@ -231,6 +232,7 @@ html {
 }
 .page4-bride-instagram-link {
   background-color: dimgrey;
+  margin-bottom: 1.5rem;
   padding: 0.5rem 0.5rem;
   width: 30%;
   align-items: center;
