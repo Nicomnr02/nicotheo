@@ -267,7 +267,7 @@ function Fade(id) {
 
 let wishes = [];
 let currentPage = 0;
-const pageSize = 3;
+const pageSize = 2;
 
 const wishesContainer = document.getElementById("wishesContainer");
 const prevBtn = document.getElementById("prevBtn");
@@ -296,14 +296,18 @@ function renderPage() {
     const card = document.createElement("div");
     card.className = `wish-card ${index % 2 === 0 ? "left" : "right"}`;
     card.innerHTML = `
-      <h3>${item.name}</h3>
-      <p>${item.wish}</p>
-      <small>${new Date(item.created_at * 1000).toLocaleString()}</small>
+      <h3 class="single-line-ellipsis">${item.name}</h3>
+      <p class="wish-text">${item.wish}</p>
+      <p class="wish-date">${new Date(item.created_at * 1000).toLocaleString()}</p>
     `;
     wishesContainer.appendChild(card);
   });
 
-  prevBtn.disabled = currentPage === 0;
+  if (currentPage == 0) {
+    prevBtn.innerHTML = ``;
+  } else {
+    prevBtn.innerHTML = `<button class="page9-pagination-control-button" id="prevBtn">⬅ Previous</button>`;
+  }
   nextBtn.disabled = end >= wishes.length;
 }
 
