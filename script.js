@@ -306,7 +306,7 @@ function renderPage() {
   if (currentPage == 0) {
     prevBtn.innerHTML = ``;
   } else {
-    prevBtn.innerHTML = `<button class="page9-pagination-control-button" id="prevBtn">⬅ Previous</button>`;
+    prevBtn.innerHTML = `<button class="page9-pagination-control-button" id="prevBtn">← Previous</button>`;
   }
   nextBtn.disabled = end >= wishes.length;
 }
