@@ -41,7 +41,13 @@ function Fade(id) {
 {
   const page0 = document.getElementById("intro");
 
-  const carouselImagePage0 = ["https://assets.apps-madhani.com/ess/user/yXhf80.jpeg", "https://assets.apps-madhani.com/ess/user/yXhf60.jpg", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+  const carouselImagePage0 = [
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/1.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/2.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/3.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/4.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/5.jpeg",
+  ];
 
   // Preload images function
   function preloadImages(urls, callback) {
@@ -98,14 +104,20 @@ function Fade(id) {
 
 /* PAGE 1 */
 {
-  const carouselImagePage1 = ["https://assets.apps-madhani.com/ess/user/yXhf80.jpeg", "https://assets.apps-madhani.com/ess/user/yXhf60.jpg", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+  const carouselImagePage1 = [
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/1.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/2.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/3.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/4.jpeg",
+    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/5.jpeg",
+  ];
   let cp1starting = 0;
   const carouselPage1 = document.getElementById("carousel-page-1");
   function playCarouselImagePage1() {
     carouselPage1.style.opacity = 0;
     setTimeout(() => {
       cp1starting = (cp1starting + 1) % carouselImagePage1.length;
-      carouselPage1.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 90%), url("${carouselImagePage1[cp1starting]}")`;
+      carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
       carouselPage1.style.opacity = 1;
     }, 500);
   }
