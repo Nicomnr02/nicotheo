@@ -460,7 +460,7 @@ button {
   display: flex;
   flex-direction: column;
 }
-.wish-date{
+.wish-date {
   font-size: small;
 }
 .single-line-ellipsis {
@@ -468,6 +468,71 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 200px;
+}
+
+/* Page 10 */
+.page10 {
+  scroll-snap-align: start;
+  background-size: cover;
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background-size: cover;
+  color: white;
+  justify-content: start;
+  gap: 1.5rem;
+}
+.page10-header-image {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://assets.apps-madhani.com/ess/user/yXhf603.jpg");
+  background-size: cover;
+  width: 60%;
+  height: 20vh;
+}
+.page10-bank-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+.page10-bank-card-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 8px;
+  gap: 0.8rem;
+}
+.page10-bank-card-detail {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(82, 81, 81, 0.8), rgba(82, 81, 81, 0.8));
+  padding: 8px;
+  align-items: start;
+  width: 40%;
+  border-radius: 8px;
+  line-height: 0.8;
+  font-family: monospace;
+}
+
+.page10-bank-card-detail-name,
+.page10-bank-card-detail-number {
+  font-size: smaller;
+  font-weight: bold;
+}
+.page10-copy-logo {
+  display: inline-block;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none; /* disables accidental text selection */
+  text-align: center;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.page10-copy-logo:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
 }
 
 /* Responsive text */

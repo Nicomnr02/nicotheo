@@ -343,3 +343,27 @@ window.addEventListener("DOMContentLoaded", fetchWishes);
 
   observer.observe(wishesPage);
 }
+
+/* Page 10 */
+function copyToClipboard1() {
+  const text = document.getElementById("account-number1").innerText;
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      alert("Copied to clipboard!");
+    })
+    .catch((err) => {
+      console.error("Failed to copy:", err);
+    });
+}
+function copyToClipboard2() {
+  const text = document.getElementById("account-number2").innerText;
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      alert("Copied to clipboard!");
+    })
+    .catch((err) => {
+      console.error("Failed to copy:", err);
+    });
+}
