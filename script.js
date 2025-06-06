@@ -1,38 +1,38 @@
 /* BEHAVIORS */
 
 const carouselImagePage0 = [
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/1.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/2.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/3.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/4.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/5.webp",
+  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/1.webp",
+  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/2.webp",
+  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/3.webp",
+  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/4.webp",
+  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/5.webp",
 ];
 
 const carouselImagePage1 = [
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/1.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/2.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/3.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/4.webp",
-  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/5.webp",
+  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/1.webp",
+  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/2.webp",
+  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/3.webp",
+  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/4.webp",
+  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/5.webp",
 ];
 
-const bgImagePage2 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/3.%20Bible%20Verses%20Photo/1.webp"];
+const bgImagePage2 = ["https://nicomnr02.github.io/invitation-asset/3.%20Bible%20Verses%20Photo/1.webp"];
 
-const bgImagePage3 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/4.%20Groom%20Photo/1.webp"];
+const bgImagePage3 = ["https://nicomnr02.github.io/invitation-asset/4.%20Groom%20Photo/1.webp"];
 
-const bgImagePage4 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/5.%20Bride%20Photo/1.webp"];
+const bgImagePage4 = ["https://nicomnr02.github.io/invitation-asset/5.%20Bride%20Photo/1.webp"];
 
-const bgImagePage5 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/6.%20Love%20Journey%20Photo/1.webp"];
+const bgImagePage5 = ["https://nicomnr02.github.io/invitation-asset/6.%20Love%20Journey%20Photo/1.webp"];
 
-const bgImagePage6 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/7.%20Save%20The%20Date%20Photo/1.webp"];
+const bgImagePage6 = ["https://nicomnr02.github.io/invitation-asset/7.%20Save%20The%20Date%20Photo/1.webp"];
 
-const bgImagePage7 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/8.%20Marriage%20Countdown%20Photo/1.webp"];
+const bgImagePage7 = ["https://nicomnr02.github.io/invitation-asset/8.%20Marriage%20Countdown%20Photo/1.webp"];
 
-const bgImagePage8 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/9.%20Wishes%20Form%20Photo/1.webp"];
+const bgImagePage8 = ["https://nicomnr02.github.io/invitation-asset/9.%20Wishes%20Form%20Photo/1.webp"];
 
-const bgImagePage9 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/10.%20Wishes%20List%20Photo/1.webp"];
+const bgImagePage9 = ["https://nicomnr02.github.io/invitation-asset/10.%20Wishes%20List%20Photo/1.webp"];
 
-const bgImagePage10 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/11.%20Wedding%20Gift%20Photo/1.webp", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+const bgImagePage10 = ["https://nicomnr02.github.io/invitation-asset/11.%20Wedding%20Gift%20Photo/1.webp", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
 
 // Preload images function
 const imageCache = {};
@@ -100,9 +100,6 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 /* PAGE 0 */
 {
   preloadImages(carouselImagePage0, () => {
-    const images = [...carouselImagePage1, ...bgImagePage2, ...bgImagePage3, ...bgImagePage4, ...bgImagePage5, ...bgImagePage6, ...bgImagePage7, ...bgImagePage8, ...bgImagePage9, ...bgImagePage10];
-    preloadImages(images, () => {});
-
     const page0 = document.getElementById("intro");
     let cp2starting = 0;
     const carouselPage0 = document.getElementById("carousel-page-0");
@@ -135,55 +132,61 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 
 /* PAGE 1 */
 {
-  let cp1starting = 0;
-  const carouselPage1 = document.getElementById("carousel-page-1");
-  function playCarouselImagePage1() {
-    carouselPage1.style.opacity = 0;
-    setTimeout(() => {
-      cp1starting = (cp1starting + 1) % carouselImagePage1.length;
-      carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
-      carouselPage1.style.opacity = 1;
-    }, 500);
-  }
-  setInterval(playCarouselImagePage1, 7000);
+  preloadImages(carouselImagePage1, () => {
+    let cp1starting = 0;
+    const carouselPage1 = document.getElementById("carousel-page-1");
+    function playCarouselImagePage1() {
+      carouselPage1.style.opacity = 0;
+      setTimeout(() => {
+        cp1starting = (cp1starting + 1) % carouselImagePage1.length;
+        carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
+        carouselPage1.style.opacity = 1;
+      }, 2000);
+    }
+    setInterval(playCarouselImagePage1, 5000);
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const paramGuestName = urlParams.get("guest_name");
-  const _paramGuestName = paramGuestName.split("_");
-  if (_paramGuestName.length == 1) {
-    guestName = _paramGuestName[0] + " & " + "Partner";
-  } else {
-    guestName = _paramGuestName.join(" & ");
-  }
-  const myDiv = document.getElementById("page1-footer-guest-name");
-  myDiv.textContent = "Dear, " + guestName;
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramGuestName = urlParams.get("guest_name");
+    const _paramGuestName = paramGuestName.split("_");
+    if (_paramGuestName.length == 1) {
+      guestName = _paramGuestName[0] + " & " + "Partner";
+    } else {
+      guestName = _paramGuestName.join(" & ");
+    }
+    const myDiv = document.getElementById("page1-footer-guest-name");
+    myDiv.textContent = "Dear, " + guestName;
 
-  const button = document.getElementById("page1-footer-heartbeat-button");
-  function enableScrollOnce() {
-    button.disabled = true;
-    button.textContent = "Scroll Down ⬇";
-    window.removeEventListener("wheel", preventScroll, { passive: false });
-    window.removeEventListener("touchmove", preventScroll, { passive: false });
+    const button = document.getElementById("page1-footer-heartbeat-button");
+    function enableScrollOnce() {
+      button.disabled = true;
+      button.textContent = "Scroll Down ⬇";
+      window.removeEventListener("wheel", preventScroll, { passive: false });
+      window.removeEventListener("touchmove", preventScroll, { passive: false });
 
-    const audioPlayer = document.getElementById("page1-footer-audio-player");
-    audioPlayer.src = "https://github.com/Nicomnr02/nicotheo/raw/refs/heads/master/Household%20of%20Faith%20-%20Winner%20and%20Shen%20THE%20ASIDORS%202022%20COVERS%20Christian%20Wedding%20Song%20(1).mp3";
-    audioPlayer.play();
-  }
-  button.addEventListener("click", enableScrollOnce);
+      const audioPlayer = document.getElementById("page1-footer-audio-player");
+      audioPlayer.src = "https://github.com/Nicomnr02/nicotheo/raw/refs/heads/master/Household%20of%20Faith%20-%20Winner%20and%20Shen%20THE%20ASIDORS%202022%20COVERS%20Christian%20Wedding%20Song%20(1).mp3";
+      audioPlayer.play();
+    }
+    button.addEventListener("click", enableScrollOnce);
+  });
 }
 
 /* PAGE 2 */
 {
-  Fade("page2-bible-quotation-chapter-fade-target");
+  preloadImages(bgImagePage2, () => {
+    Fade("page2-bible-quotation-chapter-fade-target");
+  });
 }
 
 /* PAGE 3 */
 {
-  Fade("page3-groom-fade-target1");
-  Fade("page3-groom-fade-target2");
-  Fade("page3-groom-fade-target3");
-  Fade("page3-groom-fade-target4");
-  Fade("page3-groom-fade-target5");
+  preloadImages(bgImagePage3, () => {
+    Fade("page3-groom-fade-target1");
+    Fade("page3-groom-fade-target2");
+    Fade("page3-groom-fade-target3");
+    Fade("page3-groom-fade-target4");
+    Fade("page3-groom-fade-target5");
+  });
 }
 
 /* PAGE 4 */
