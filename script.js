@@ -101,10 +101,7 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 {
   preloadImages(carouselImagePage0, () => {
     const images = [...carouselImagePage1, ...bgImagePage2, ...bgImagePage3, ...bgImagePage4, ...bgImagePage5, ...bgImagePage6, ...bgImagePage7, ...bgImagePage8, ...bgImagePage9, ...bgImagePage10];
-    async function preloadNext() {
-      preloadImages(images, () => {});
-    }
-    preloadNext();
+    preloadImages(images, () => {});
 
     const page0 = document.getElementById("intro");
     let cp2starting = 0;
