@@ -12,8 +12,6 @@ function preventScroll(e) {
 window.addEventListener("wheel", preventScroll, { passive: false });
 window.addEventListener("touchmove", preventScroll, { passive: false });
 
-let cached = "";
-
 const carouselImagePage0 = [
   "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/1.webp",
   "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/2.webp",
@@ -121,9 +119,10 @@ function main() {
     function playCarouselImagePage0() {
       cp2starting = (cp2starting + 1) % carouselImagePage0.length;
 
-      cached = imageCache[carouselImagePage0[cp2starting]];
-      if (cached) {
-        carouselPage0.style.backgroundImage = `url("${cached.src}")`;
+      var cached0 = imageCache[carouselImagePage0[cp2starting]];
+      console.log("hereeee", cached0.src);
+      if (cached0) {
+        carouselPage0.style.backgroundImage = `url("${cached0.src}")`;
       } else {
         carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
       }
@@ -158,9 +157,9 @@ function main() {
       setTimeout(() => {
         cp1starting = (cp1starting + 1) % carouselImagePage1.length;
 
-        cached = imageCache[carouselImagePage1[cp1starting]];
-        if (cached) {
-          carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+        var cached1 = imageCache[carouselImagePage1[cp1starting]];
+        if (cached1) {
+          carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached1.src}")`;
         } else {
           carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
         }
@@ -197,9 +196,9 @@ function main() {
   /* PAGE 2 */
   {
     const page2 = document.getElementById("page2");
-    cached = imageCache[bgImagePage2[0]];
-    if (cached) {
-      page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+    var cached2 = imageCache[bgImagePage2[0]];
+    if (cached2) {
+      page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached2.src}")`;
     } else {
       page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage2[0]}")`;
     }
@@ -210,9 +209,9 @@ function main() {
   /* PAGE 3 */
   {
     const page3 = document.getElementById("page3");
-    cached = imageCache[bgImagePage3[0]];
-    if (cached) {
-      page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+    var cached3 = imageCache[bgImagePage3[0]];
+    if (cached3) {
+      page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached3.src}")`;
     } else {
       page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage3[0]}")`;
     }
@@ -227,9 +226,9 @@ function main() {
   /* PAGE 4 */
   {
     const page4 = document.getElementById("page4");
-    cached = imageCache[bgImagePage4[0]];
-    if (cached) {
-      page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+   var  cached4 = imageCache[bgImagePage4[0]];
+    if (cached4) {
+      page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached4.src}")`;
     } else {
       page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage4[0]}")`;
     }
@@ -244,9 +243,9 @@ function main() {
   /* PAGE 5 */
   {
     const page5 = document.getElementById("page5");
-    cached = imageCache[bgImagePage5[0]];
-    if (cached) {
-      page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+    var cached5 = imageCache[bgImagePage5[0]];
+    if (cached5) {
+      page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached5.src}")`;
     } else {
       page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage5[0]}")`;
     }
@@ -259,9 +258,9 @@ function main() {
   /* PAGE 6 */
   {
     const page6 = document.getElementById("page6");
-    cached = imageCache[bgImagePage6[0]];
-    if (cached) {
-      page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+    var cached6 = imageCache[bgImagePage6[0]];
+    if (cached6) {
+      page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached6.src}")`;
     } else {
       page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage6[0]}")`;
     }
@@ -270,9 +269,9 @@ function main() {
   /* PAGE 7 */
   {
     const page7 = document.getElementById("page7");
-    cached = imageCache[bgImagePage7[0]];
-    if (cached) {
-      page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+    var cached7 = imageCache[bgImagePage7[0]];
+    if (cached7) {
+      page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached7.src}")`;
     } else {
       page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage7[0]}")`;
     }
@@ -340,9 +339,9 @@ function main() {
   /* PAGE 8 */
   {
     const page8 = document.getElementById("page8");
-    cached = imageCache[bgImagePage8[0]];
-    if (cached) {
-      page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+    var cached8 = imageCache[bgImagePage8[0]];
+    if (cached8) {
+      page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached8.src}")`;
     } else {
       page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage8[0]}")`;
     }
@@ -383,9 +382,9 @@ function main() {
   /* Page 9 */
 
   const page9 = document.getElementById("page9");
-  cached = imageCache[bgImagePage9[0]];
-  if (cached) {
-    page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  var cached9 = imageCache[bgImagePage9[0]];
+  if (cached9) {
+    page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached9.src}")`;
   } else {
     page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage9[0]}")`;
   }
@@ -471,9 +470,9 @@ function main() {
 
   /* Page 10 */
   const page10 = document.getElementById("page10");
-  cached = imageCache[bgImagePage10[0]];
-  if (cached) {
-    page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  var cached10 = imageCache[bgImagePage10[0]];
+  if (cached10) {
+    page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached10.src}")`;
   } else {
     page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage10[0]}")`;
   }
