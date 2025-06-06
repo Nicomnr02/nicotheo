@@ -130,10 +130,11 @@ function main() {
 
     window.addEventListener("load", () => {
       setTimeout(() => {
-        if (page0) {
-          page0.remove();
-        }
-      }, 1000);
+        page0.classList.add("page0-hidden");
+        setTimeout(() => {
+          page0.style.display = "none";
+        }, 1000);
+      }, 6000);
     });
   }
 
@@ -191,7 +192,6 @@ function main() {
     } else {
       page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage2[0]}")`;
     }
-    console.log("hereee: ", cached.src);
 
     Fade("page2-bible-quotation-chapter-fade-target");
   }
