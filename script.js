@@ -13,38 +13,38 @@ window.addEventListener("wheel", preventScroll, { passive: false });
 window.addEventListener("touchmove", preventScroll, { passive: false });
 
 const carouselImagePage0 = [
-  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/1.webp",
-  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/2.webp",
-  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/3.webp",
-  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/4.webp",
-  "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/5.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/1.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/2.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/3.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/4.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/5.webp",
 ];
 
 const carouselImagePage1 = [
-  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/1.webp",
-  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/2.webp",
-  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/3.webp",
-  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/4.webp",
-  "https://nicomnr02.github.io/invitation-asset/2.%20Introduction%20Photos/5.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/1.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/2.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/3.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/4.webp",
+  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/5.webp",
 ];
 
-const bgImagePage2 = ["https://nicomnr02.github.io/invitation-asset/3.%20Bible%20Verses%20Photo/1.webp"];
+const bgImagePage2 = ["https://nicotheoweddinginvitationasset.netlify.app/3.%20Bible%20Verses%20Photo/1.webp"];
 
-const bgImagePage3 = ["https://nicomnr02.github.io/invitation-asset/4.%20Groom%20Photo/1.webp"];
+const bgImagePage3 = ["https://nicotheoweddinginvitationasset.netlify.app/4.%20Groom%20Photo/1.webp"];
 
-const bgImagePage4 = ["https://nicomnr02.github.io/invitation-asset/5.%20Bride%20Photo/1.webp"];
+const bgImagePage4 = ["https://nicotheoweddinginvitationasset.netlify.app/5.%20Bride%20Photo/1.webp"];
 
-const bgImagePage5 = ["https://nicomnr02.github.io/invitation-asset/6.%20Love%20Journey%20Photo/1.webp"];
+const bgImagePage5 = ["https://nicotheoweddinginvitationasset.netlify.app/6.%20Love%20Journey%20Photo/1.webp"];
 
-const bgImagePage6 = ["https://nicomnr02.github.io/invitation-asset/7.%20Save%20The%20Date%20Photo/1.webp"];
+const bgImagePage6 = ["https://nicotheoweddinginvitationasset.netlify.app/7.%20Save%20The%20Date%20Photo/1.webp"];
 
-const bgImagePage7 = ["https://nicomnr02.github.io/invitation-asset/8.%20Marriage%20Countdown%20Photo/1.webp"];
+const bgImagePage7 = ["https://nicotheoweddinginvitationasset.netlify.app/8.%20Marriage%20Countdown%20Photo/1.webp"];
 
-const bgImagePage8 = ["https://nicomnr02.github.io/invitation-asset/9.%20Wishes%20Form%20Photo/1.webp"];
+const bgImagePage8 = ["https://nicotheoweddinginvitationasset.netlify.app/9.%20Wishes%20Form%20Photo/1.webp"];
 
-const bgImagePage9 = ["https://nicomnr02.github.io/invitation-asset/10.%20Wishes%20List%20Photo/1.webp"];
+const bgImagePage9 = ["https://nicotheoweddinginvitationasset.netlify.app/10.%20Wishes%20List%20Photo/1.webp"];
 
-const bgImagePage10 = ["https://nicomnr02.github.io/invitation-asset/11.%20Wedding%20Gift%20Photo/1.webp", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+const bgImagePage10 = ["https://nicotheoweddinginvitationasset.netlify.app/11.%20Wedding%20Gift%20Photo/1.webp", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
 
 // Preload images function
 const imageCache = {};
