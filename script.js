@@ -1,4 +1,16 @@
 /* BEHAVIORS */
+window.addEventListener("load", () => {
+  const element = document.getElementById("intro");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+function preventScroll(e) {
+  e.preventDefault();
+}
+window.addEventListener("wheel", preventScroll, { passive: false });
+window.addEventListener("touchmove", preventScroll, { passive: false });
 
 const carouselImagePage0 = [
   "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/1.webp",
@@ -43,6 +55,9 @@ function preloadImages(urls, callback) {
   urls.forEach((url) => {
     const img = new Image();
     img.src = url;
+    if (!imageCache[url]) {
+      imageCache[url] = img;
+    }
     img.onload = () => {
       loadedCount++;
       if (loadedCount === total) {
@@ -55,51 +70,31 @@ function preloadImages(urls, callback) {
         callback();
       }
     };
-
-    if (!imageCache[url]) {
-      imageCache[url] = img;
-    }
   });
 }
 
-preloadImages(images, () => {
-  main();
-});
-
 function main() {
   function Fade(id) {
-    // const container = document.getElementById(id);
-    // const observer = new IntersectionObserver(
-    //   (entries) => {
-    //     entries.forEach((entry) => {
-    //       if (entry.isIntersecting) {
-    //         container.classList.remove("fade-in");
-    //         container.classList.add("fade-out");
-    //         setTimeout(() => {
-    //           container.classList.remove("fade-out");
-    //           container.classList.add("fade-in");
-    //         }, 500);
-    //       }
-    //     });
-    //   },
-    //   {
-    //     threshold: 0.3,
-    //   }
-    // );
-    // observer.observe(container);
+    const container = document.getElementById(id);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            container.classList.remove("fade-in");
+            container.classList.add("fade-out");
+            setTimeout(() => {
+              container.classList.remove("fade-out");
+              container.classList.add("fade-in");
+            }, 500);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+    observer.observe(container);
   }
-  window.addEventListener("load", () => {
-    const element = document.getElementById("intro");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-
-  function preventScroll(e) {
-    e.preventDefault();
-  }
-  window.addEventListener("wheel", preventScroll, { passive: false });
-  window.addEventListener("touchmove", preventScroll, { passive: false });
 
   /* PAGE 0 */
   {
@@ -490,3 +485,5 @@ function main() {
       });
   }
 }
+
+preloadImages(images, main);
