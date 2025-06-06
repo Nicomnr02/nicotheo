@@ -106,7 +106,13 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 
     function playCarouselImagePage0() {
       cp2starting = (cp2starting + 1) % carouselImagePage0.length;
-      carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
+
+      cached = imageCache[carouselImagePage0[cp2starting]];
+      if (cached) {
+        carouselPage0.style.backgroundImage = `url("${cached.src}")`;
+      } else {
+        carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
+      }
     }
     setInterval(playCarouselImagePage0, 100);
 
@@ -139,7 +145,13 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
       carouselPage1.style.opacity = 0;
       setTimeout(() => {
         cp1starting = (cp1starting + 1) % carouselImagePage1.length;
-        carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
+
+        cached = imageCache[carouselImagePage1[cp1starting]];
+        if (cached) {
+          carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+        } else {
+          carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
+        }
         carouselPage1.style.opacity = 1;
       }, 2000);
     }
@@ -173,24 +185,44 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 
 /* PAGE 2 */
 {
-  preloadImages(bgImagePage2, () => {
-    Fade("page2-bible-quotation-chapter-fade-target");
-  });
+  const page2 = document.getElementById("page2");
+  cached = imageCache[bgImagePage2[0]];
+  if (cached) {
+    page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  } else {
+    page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage2[0]}")`;
+  }
+
+  Fade("page2-bible-quotation-chapter-fade-target");
 }
 
 /* PAGE 3 */
 {
-  preloadImages(bgImagePage3, () => {
-    Fade("page3-groom-fade-target1");
-    Fade("page3-groom-fade-target2");
-    Fade("page3-groom-fade-target3");
-    Fade("page3-groom-fade-target4");
-    Fade("page3-groom-fade-target5");
-  });
+  const page3 = document.getElementById("page3");
+  cached = imageCache[bgImagePage3[0]];
+  if (cached) {
+    page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  } else {
+    page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage3[0]}")`;
+  }
+
+  Fade("page3-groom-fade-target1");
+  Fade("page3-groom-fade-target2");
+  Fade("page3-groom-fade-target3");
+  Fade("page3-groom-fade-target4");
+  Fade("page3-groom-fade-target5");
 }
 
 /* PAGE 4 */
 {
+  const page4 = document.getElementById("page4");
+  cached = imageCache[bgImagePage4[0]];
+  if (cached) {
+    page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  } else {
+    page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage4[0]}")`;
+  }
+
   Fade("page4-groom-fade-target1");
   Fade("page4-groom-fade-target2");
   Fade("page4-groom-fade-target3");
@@ -200,13 +232,40 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 
 /* PAGE 5 */
 {
+  const page5 = document.getElementById("page5");
+  cached = imageCache[bgImagePage5[0]];
+  if (cached) {
+    page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  } else {
+    page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage5[0]}")`;
+  }
+
   Fade("page5-content-fade-target1");
   Fade("page5-content-fade-target2");
   Fade("page5-content-fade-target3");
 }
 
+/* PAGE 6 */
+{
+  const page6 = document.getElementById("page6");
+  cached = imageCache[bgImagePage6[0]];
+  if (cached) {
+    page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  } else {
+    page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage6[0]}")`;
+  }
+}
+
 /* PAGE 7 */
 {
+  const page7 = document.getElementById("page7");
+  cached = imageCache[bgImagePage7[0]];
+  if (cached) {
+    page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  } else {
+    page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage7[0]}")`;
+  }
+
   const targetDate = new Date("2025-07-08T09:00:00");
 
   function updateCountdown() {
@@ -269,6 +328,14 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 
 /* PAGE 8 */
 {
+  const page8 = document.getElementById("page8");
+  cached = imageCache[bgImagePage8[0]];
+  if (cached) {
+    page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+  } else {
+    page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage8[0]}")`;
+  }
+
   document.getElementById("wishForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -303,6 +370,14 @@ window.addEventListener("touchmove", preventScroll, { passive: false });
 }
 
 /* Page 9 */
+
+const page9 = document.getElementById("page9");
+cached = imageCache[bgImagePage9[0]];
+if (cached) {
+  page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+} else {
+  page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage9[0]}")`;
+}
 
 let wishes = [];
 let currentPage = 0;
@@ -384,6 +459,14 @@ window.addEventListener("DOMContentLoaded", fetchWishes);
 }
 
 /* Page 10 */
+const page10 = document.getElementById("page10");
+cached = imageCache[bgImagePage10[0]];
+if (cached) {
+  page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
+} else {
+  page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage10[0]}")`;
+}
+
 function copyToClipboard1() {
   const text = document.getElementById("account-number1").innerText;
   navigator.clipboard
