@@ -12,6 +12,8 @@ function preventScroll(e) {
 window.addEventListener("wheel", preventScroll, { passive: false });
 window.addEventListener("touchmove", preventScroll, { passive: false });
 
+let cached = "";
+
 const carouselImagePage0 = [
   "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/1.webp",
   "https://nicomnr02.github.io/invitation-asset/1.%20Loading%20Spinner%20Photos/2.webp",
@@ -119,7 +121,7 @@ function main() {
     function playCarouselImagePage0() {
       cp2starting = (cp2starting + 1) % carouselImagePage0.length;
 
-      var cached = imageCache[carouselImagePage0[cp2starting]];
+      cached = imageCache[carouselImagePage0[cp2starting]];
       if (cached) {
         carouselPage0.style.backgroundImage = `url("${cached.src}")`;
       } else {
@@ -156,7 +158,7 @@ function main() {
       setTimeout(() => {
         cp1starting = (cp1starting + 1) % carouselImagePage1.length;
 
-        var cached = imageCache[carouselImagePage1[cp1starting]];
+        cached = imageCache[carouselImagePage1[cp1starting]];
         if (cached) {
           carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
         } else {
@@ -195,7 +197,7 @@ function main() {
   /* PAGE 2 */
   {
     const page2 = document.getElementById("page2");
-    var cached = imageCache[bgImagePage2[0]];
+    cached = imageCache[bgImagePage2[0]];
     if (cached) {
       page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
     } else {
@@ -208,7 +210,7 @@ function main() {
   /* PAGE 3 */
   {
     const page3 = document.getElementById("page3");
-    var cached = imageCache[bgImagePage3[0]];
+    cached = imageCache[bgImagePage3[0]];
     if (cached) {
       page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
     } else {
@@ -225,7 +227,7 @@ function main() {
   /* PAGE 4 */
   {
     const page4 = document.getElementById("page4");
-    var cached = imageCache[bgImagePage4[0]];
+    cached = imageCache[bgImagePage4[0]];
     if (cached) {
       page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
     } else {
@@ -242,7 +244,7 @@ function main() {
   /* PAGE 5 */
   {
     const page5 = document.getElementById("page5");
-    var cached = imageCache[bgImagePage5[0]];
+    cached = imageCache[bgImagePage5[0]];
     if (cached) {
       page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
     } else {
@@ -257,7 +259,7 @@ function main() {
   /* PAGE 6 */
   {
     const page6 = document.getElementById("page6");
-    var cached = imageCache[bgImagePage6[0]];
+    cached = imageCache[bgImagePage6[0]];
     if (cached) {
       page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
     } else {
@@ -268,7 +270,7 @@ function main() {
   /* PAGE 7 */
   {
     const page7 = document.getElementById("page7");
-    var cached = imageCache[bgImagePage7[0]];
+    cached = imageCache[bgImagePage7[0]];
     if (cached) {
       page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
     } else {
@@ -338,7 +340,7 @@ function main() {
   /* PAGE 8 */
   {
     const page8 = document.getElementById("page8");
-    var cached = imageCache[bgImagePage8[0]];
+    cached = imageCache[bgImagePage8[0]];
     if (cached) {
       page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
     } else {
@@ -381,7 +383,7 @@ function main() {
   /* Page 9 */
 
   const page9 = document.getElementById("page9");
-  var cached = imageCache[bgImagePage9[0]];
+  cached = imageCache[bgImagePage9[0]];
   if (cached) {
     page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
   } else {
@@ -469,7 +471,7 @@ function main() {
 
   /* Page 10 */
   const page10 = document.getElementById("page10");
-  var cached = imageCache[bgImagePage10[0]];
+  cached = imageCache[bgImagePage10[0]];
   if (cached) {
     page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached.src}")`;
   } else {
