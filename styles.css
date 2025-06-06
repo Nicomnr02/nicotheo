@@ -61,8 +61,39 @@ html {
   background-size: cover;
 }
 
+.dot-loader {
+  font-size: 20px;
+  text-align: center;
+}
+
+.dot-loader::after {
+  content: ".";
+  animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0% {
+    content: ".";
+  }
+  20% {
+    content: "..";
+  }
+  40% {
+    content: "...";
+  }
+  60% {
+    content: "....";
+  }
+  80% {
+    content: ".....";
+  }
+  100% {
+    content: ".";
+  }
+}
+
 .page1 {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://assets.apps-madhani.com/ess/user/yXhf80.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://assets.apps-madhani.com/ess/user/yXhf80.webp");
   transition: opacity 8s ease;
   background-position: center;
   background-repeat: no-repeat;
@@ -138,7 +169,7 @@ html {
   align-items: center;
   justify-content: end;
   text-align: justify;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/3.%20Bible%20Verses%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/3.%20Bible%20Verses%20Photo/1.webp");
   background-size: cover;
   transition: opacity 2s ease;
   scroll-snap-align: start;
@@ -171,7 +202,7 @@ html {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/4.%20Groom%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/4.%20Groom%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: end;
@@ -212,7 +243,7 @@ html {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/5.%20Bride%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/5.%20Bride%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: end;
@@ -253,7 +284,7 @@ html {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/6.%20Love%20Journey%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/6.%20Love%20Journey%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: start;
@@ -269,7 +300,7 @@ html {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/7.%20Save%20The%20Date%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/7.%20Save%20The%20Date%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: center;
@@ -322,7 +353,7 @@ html {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/8.%20Marriage%20Countdown%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/8.%20Marriage%20Countdown%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: center;
@@ -371,7 +402,7 @@ html {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/9.%20Wishes%20Form%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/9.%20Wishes%20Form%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: start;
@@ -424,7 +455,7 @@ button {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/10.%20Wishes%20List%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/10.%20Wishes%20List%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: start;
@@ -475,7 +506,7 @@ button {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/11.%20Wedding%20Gift%20Photo/1.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/11.%20Wedding%20Gift%20Photo/1.webp");
   background-size: cover;
   color: white;
   justify-content: start;

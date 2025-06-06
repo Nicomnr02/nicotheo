@@ -1,17 +1,65 @@
 /* BEHAVIORS */
 
-window.addEventListener("load", () => {
-  const element = document.getElementById("intro");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-});
+const carouselImagePage0 = [
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/1.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/2.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/3.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/4.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/5.webp",
+];
 
-function preventScroll(e) {
-  e.preventDefault();
+const carouselImagePage1 = [
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/1.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/2.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/3.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/4.webp",
+  "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/5.webp",
+];
+
+const bgImagePage2 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/3.%20Bible%20Verses%20Photo/1.webp"];
+
+const bgImagePage3 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/4.%20Groom%20Photo/1.webp"];
+
+const bgImagePage4 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/5.%20Bride%20Photo/1.webp"];
+
+const bgImagePage5 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/6.%20Love%20Journey%20Photo/1.webp"];
+
+const bgImagePage6 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/7.%20Save%20The%20Date%20Photo/1.webp"];
+
+const bgImagePage7 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/8.%20Marriage%20Countdown%20Photo/1.webp"];
+
+const bgImagePage8 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/9.%20Wishes%20Form%20Photo/1.webp"];
+
+const bgImagePage9 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/10.%20Wishes%20List%20Photo/1.webp"];
+
+const bgImagePage10 = ["https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/11.%20Wedding%20Gift%20Photo/1.webp", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+
+// Preload images function
+const imageCache = {};
+function preloadImages(urls, callback) {
+  let loadedCount = 0;
+  const total = urls.length;
+  urls.forEach((url) => {
+    const img = new Image();
+    img.src = url;
+    img.onload = () => {
+      loadedCount++;
+      if (loadedCount === total) {
+        callback();
+      }
+    };
+    img.onerror = () => {
+      loadedCount++;
+      if (loadedCount === total) {
+        callback();
+      }
+    };
+
+    if (!imageCache[url]) {
+      imageCache[url] = img;
+    }
+  });
 }
-window.addEventListener("wheel", preventScroll, { passive: false });
-window.addEventListener("touchmove", preventScroll, { passive: false });
 
 function Fade(id) {
   const container = document.getElementById(id);
@@ -36,43 +84,29 @@ function Fade(id) {
 
   observer.observe(container);
 }
+window.addEventListener("load", () => {
+  const element = document.getElementById("intro");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+function preventScroll(e) {
+  e.preventDefault();
+}
+window.addEventListener("wheel", preventScroll, { passive: false });
+window.addEventListener("touchmove", preventScroll, { passive: false });
 
 /* PAGE 0 */
 {
-  const page0 = document.getElementById("intro");
-
-  const carouselImagePage0 = [
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/1.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/2.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/3.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/4.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/1.%20Loading%20Spinner%20Photos/5.jpeg",
-  ];
-
-  // Preload images function
-  function preloadImages(urls, callback) {
-    let loadedCount = 0;
-    const total = urls.length;
-    urls.forEach((url) => {
-      const img = new Image();
-      img.src = url;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === total) {
-          callback();
-        }
-      };
-      img.onerror = () => {
-        // Even if image fails, count it to avoid blocking
-        loadedCount++;
-        if (loadedCount === total) {
-          callback();
-        }
-      };
-    });
-  }
-
   preloadImages(carouselImagePage0, () => {
+    const images = [...carouselImagePage1, ...bgImagePage2, ...bgImagePage3, ...bgImagePage4, ...bgImagePage5, ...bgImagePage6, ...bgImagePage7, ...bgImagePage8, ...bgImagePage9, ...bgImagePage10];
+    async function preloadNext() {
+      preloadImages(images, () => {});
+    }
+    preloadNext();
+
+    const page0 = document.getElementById("intro");
     let cp2starting = 0;
     const carouselPage0 = document.getElementById("carousel-page-0");
 
@@ -104,13 +138,6 @@ function Fade(id) {
 
 /* PAGE 1 */
 {
-  const carouselImagePage1 = [
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/1.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/2.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/3.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/4.jpeg",
-    "https://raw.githubusercontent.com/Nicomnr02/invitation-asset/master/2.%20Introduction%20Photos/5.jpeg",
-  ];
   let cp1starting = 0;
   const carouselPage1 = document.getElementById("carousel-page-1");
   function playCarouselImagePage1() {
@@ -121,7 +148,7 @@ function Fade(id) {
       carouselPage1.style.opacity = 1;
     }, 500);
   }
-  setInterval(playCarouselImagePage1, 5000);
+  setInterval(playCarouselImagePage1, 7000);
 
   const urlParams = new URLSearchParams(window.location.search);
   const paramGuestName = urlParams.get("guest_name");
