@@ -130,11 +130,10 @@ function main() {
 
     window.addEventListener("load", () => {
       setTimeout(() => {
-        const introSection = document.getElementById("intro");
-        if (introSection) {
-          introSection.remove();
+        if (page0) {
+          page0.remove();
         }
-      }, 6000);
+      }, 1000);
     });
   }
 
