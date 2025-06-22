@@ -556,6 +556,7 @@ button {
   background-size: cover;
   background-position: 60% 20%;
   color: white;
+  overflow: hidden;
   justify-content: start;
   gap: 1.5rem;
 }
@@ -619,6 +620,7 @@ button {
   background-position: 60% 20%;
   color: white;
   justify-content: start;
+  overflow: hidden;
   align-items: center;
 }
 .page10 img {
