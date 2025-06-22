@@ -256,7 +256,6 @@ _assets.then(() => {
   /* PAGE 0 */
   const page0 = document.getElementById("intro");
   const loadingText = document.getElementById("page0-loading-text");
-  // Progress loader
   let percent = 0;
   const percentInterval = setInterval(() => {
     percent++;
@@ -274,53 +273,37 @@ _assets.then(() => {
     }, 1000);
   }, 4500);
 
-  preloadImages(carouselImagePage1).then(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const paramGuestName = urlParams.get("guest_name");
-    const _paramGuestName = paramGuestName.split("_");
-    if (_paramGuestName.length == 1) {
-      guestName = _paramGuestName[0] + " & " + "Partner";
-    } else {
-      guestName = _paramGuestName.join(" & ");
-    }
-    const myDiv = document.getElementById("page1-footer-guest-name");
-    myDiv.textContent = "Dear, " + guestName;
+  // PAGE 1
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramGuestName = urlParams.get("guest_name");
+  const _paramGuestName = paramGuestName.split("_");
+  if (_paramGuestName.length == 1) {
+    guestName = _paramGuestName[0] + " & " + "Partner";
+  } else {
+    guestName = _paramGuestName.join(" & ");
+  }
+  const myDiv = document.getElementById("page1-footer-guest-name");
+  myDiv.textContent = "Dear, " + guestName;
 
-    const button = document.getElementById("page1-footer-heartbeat-button");
-    button.addEventListener("click", () => {
-      button.disabled = true;
-      button.textContent = "Scroll Down ⬇";
+  const button = document.getElementById("page1-footer-heartbeat-button");
+  button.addEventListener("click", () => {
+    button.disabled = true;
+    button.textContent = "Scroll Down ⬇";
 
-      enableScroll(); // allow user to scroll
+    enableScroll(); // allow user to scroll
 
-      const audioPlayer = document.getElementById("page1-footer-audio-player");
-      audioPlayer.src = bgMusic;
-      console.log("bgmusic: ", bgMusic);
-      audioPlayer.play();
-    });
+    const audioPlayer = document.getElementById("page1-footer-audio-player");
+    audioPlayer.src = bgMusic;
+    console.log("bgmusic: ", bgMusic);
+    audioPlayer.play();
   });
 
+  // PAGE 2
   preloadImages(bgImagePage2).then(() => {
-    const page2 = document.getElementById("page2");
-    var cached2 = imageCache[bgImagePage2[0]];
-    if (cached2) {
-      page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached2.src}")`;
-    } else {
-      page2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage2[0]}")`;
-    }
-
     Fade("page2-bible-quotation-chapter-fade-target");
   });
 
   preloadImages(bgImagePage3).then(() => {
-    const page3 = document.getElementById("page3");
-    var cached3 = imageCache[bgImagePage3[0]];
-    if (cached3) {
-      page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached3.src}")`;
-    } else {
-      page3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage3[0]}")`;
-    }
-
     Fade("page3-groom-fade-target1");
     Fade("page3-groom-fade-target2");
     Fade("page3-groom-fade-target3");
@@ -329,14 +312,6 @@ _assets.then(() => {
   });
 
   preloadImages(bgImagePage4).then(() => {
-    const page4 = document.getElementById("page4");
-    var cached4 = imageCache[bgImagePage4[0]];
-    if (cached4) {
-      page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached4.src}")`;
-    } else {
-      page4.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage4[0]}")`;
-    }
-
     Fade("page4-groom-fade-target1");
     Fade("page4-groom-fade-target2");
     Fade("page4-groom-fade-target3");
@@ -345,37 +320,13 @@ _assets.then(() => {
   });
 
   preloadImages(bgImagePage5).then(() => {
-    const page5 = document.getElementById("page5");
-    var cached5 = imageCache[bgImagePage5[0]];
-    if (cached5) {
-      page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached5.src}")`;
-    } else {
-      page5.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage5[0]}")`;
-    }
-
     Fade("page5-content-fade-target1");
     Fade("page5-content-fade-target2");
     Fade("page5-content-fade-target3");
   });
 
-  preloadImages(bgImagePage6).then(() => {
-    const page6 = document.getElementById("page6");
-    var cached6 = imageCache[bgImagePage6[0]];
-    if (cached6) {
-      page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached6.src}")`;
-    } else {
-      page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage6[0]}")`;
-    }
-  });
+  preloadImages(bgImagePage6).then(() => {});
   preloadImages(bgImagePage7).then(() => {
-    const page7 = document.getElementById("page7");
-    var cached7 = imageCache[bgImagePage7[0]];
-    if (cached7) {
-      page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached7.src}")`;
-    } else {
-      page7.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage7[0]}")`;
-    }
-
     const targetDate = new Date("2025-07-08T09:00:00");
 
     function updateCountdown() {
@@ -404,14 +355,6 @@ _assets.then(() => {
   });
 
   preloadImages(bgImagePage8).then(() => {
-    const page8 = document.getElementById("page8");
-    var cached8 = imageCache[bgImagePage8[0]];
-    if (cached8) {
-      page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached8.src}")`;
-    } else {
-      page8.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage8[0]}")`;
-    }
-
     document.getElementById("wishForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
@@ -446,14 +389,6 @@ _assets.then(() => {
   });
 
   preloadImages(bgImagePage9).then(() => {
-    const page9 = document.getElementById("page9");
-    var cached9 = imageCache[bgImagePage9[0]];
-    if (cached9) {
-      page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached9.src}")`;
-    } else {
-      page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage9[0]}")`;
-    }
-
     let wishes = [];
     let currentPage = 0;
     const pageSize = 2;
@@ -536,12 +471,6 @@ _assets.then(() => {
 
   preloadImages(bgImagePage10).then(() => {
     const page10 = document.getElementById("page10");
-    var cached10 = imageCache[bgImagePage10[0]];
-    if (cached10) {
-      page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached10.src}")`;
-    } else {
-      page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage10[0]}")`;
-    }
 
     function copyToClipboard1() {
       const text = document.getElementById("account-number1").innerText;

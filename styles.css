@@ -25,6 +25,7 @@ html {
 }
 
 .page {
+  position: relative;
   min-height: 100vh;
   padding: 2rem;
   display: flex;
@@ -124,7 +125,8 @@ html {
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  z-index: -1;
+  z-index: -2;
+  filter: brightness(80%);
 }
 
 .page1-header {
@@ -188,9 +190,21 @@ html {
   justify-content: end;
   text-align: justify;
   background-size: cover;
-  background-position: 30% 20%;
   transition: opacity 2s ease;
   scroll-snap-align: start;
+  overflow: hidden;
+}
+
+.page2 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 30% center; /* <--- move left or right */
+  filter: brightness(80%);
 }
 
 .page2-bible-quotation {
@@ -218,12 +232,23 @@ html {
 
 .page3 {
   scroll-snap-align: start;
-  background-size: cover;
+  overflow: hidden;
   display: flex;
   background-size: cover;
   color: white;
   justify-content: end;
   gap: 1rem;
+}
+.page3 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 30% center; /* <--- move left or right */
+  filter: brightness(80%);
 }
 .page3-groom-name {
   font-size: xx-large;
@@ -263,7 +288,19 @@ html {
   background-size: cover;
   color: white;
   justify-content: end;
+  overflow: hidden;
   gap: 1.5rem;
+}
+.page4 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 30% center; /* <--- move left or right */
+  filter: brightness(80%);
 }
 .page4-bride-name {
   font-size: xx-large;
@@ -299,11 +336,23 @@ html {
 .page5 {
   scroll-snap-align: start;
   background-size: cover;
+  overflow: hidden;
   display: flex;
   background-size: cover;
   color: white;
   justify-content: start;
   gap: 0.5rem;
+}
+.page5 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 30% center; /* <--- move left or right */
+  filter: brightness(80%);
 }
 
 .page5-journey {
@@ -320,6 +369,18 @@ html {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  overflow: hidden;
+}
+.page6 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 30% center; /* <--- move left or right */
+  filter: brightness(80%);
 }
 .page6-save-our-date {
   font-size: small;
@@ -367,11 +428,23 @@ html {
   scroll-snap-align: start;
   background-size: cover;
   display: flex;
+  overflow: hidden;
   background-size: cover;
   color: white;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+}
+.page7 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 30% center; /* <--- move left or right */
+  filter: brightness(80%);
 }
 .page7-header {
   text-align: center;
@@ -416,10 +489,22 @@ html {
   background-size: cover;
   display: flex;
   background-size: cover;
+  overflow: hidden;
   background-position: 60% 20%;
   color: white;
   justify-content: start;
   gap: 2rem;
+}
+.page8 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 60% center; /* <--- move left or right */
+  filter: brightness(80%);
 }
 .page8-form {
   display: flex;
@@ -474,6 +559,17 @@ button {
   justify-content: start;
   gap: 1.5rem;
 }
+.page9 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 60% center; /* <--- move left or right */
+  filter: brightness(80%);
+}
 .page9-pagination-control-buttons {
   display: flex;
   gap: 5rem;
@@ -525,7 +621,17 @@ button {
   justify-content: start;
   align-items: center;
 }
-
+.page10 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  object-position: 60% center; /* <--- move left or right */
+  filter: brightness(80%);
+}
 .page10-bank-card {
   display: flex;
   flex-direction: column;
@@ -554,10 +660,10 @@ button {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
 }
 .card {
-  width: 18rem;
+  width: 20rem;
   height: 30vh;
   border-radius: 15px;
-  background: linear-gradient(135deg, #00296b, #00509e);
+  background: linear-gradient(135deg, #a2badf43, #6a8aaa);
   color: white;
   padding: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
