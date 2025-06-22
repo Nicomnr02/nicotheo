@@ -44,6 +44,7 @@ html {
   gap: 3vh;
   color: white;
   scroll-snap-align: start;
+  object-fit: cover;
 }
 
 .page0-hidden {

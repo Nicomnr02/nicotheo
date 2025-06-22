@@ -22,8 +22,9 @@ let bgImagePage10 = [];
 let bgImagePage11 = [];
 let bgImagePage12 = [];
 let bgImagePage14 = [];
+let bgMusic = "";
 
-// Preload images function
+/* HELPER */
 async function preloadImages(urls) {
   return Promise.allSettled(
     urls.map((url) => {
@@ -119,7 +120,39 @@ function Fade(id) {
   );
   observer.observe(container);
 }
+function downloadICS() {
+  const title = "Nicolas & Theofani Wedding Celebration";
+  const description = "Join us for our special day!";
+  const location = "Tanjungbalai Asahan, Sumatera Utara";
+  const startDate = "20250708T000000Z";
+  const endDate = "20250708T130000Z";
 
+  const icsContent = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//YourOrganization//EN",
+    "BEGIN:VEVENT",
+    "UID:" + new Date().getTime() + "@nicotheoweddinginvitation.netlify.app",
+    "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z",
+    "DTSTART:" + startDate,
+    "DTEND:" + endDate,
+    "SUMMARY:" + title,
+    "DESCRIPTION:" + description,
+    "LOCATION:" + location,
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\r\n");
+
+  const blob = new Blob([icsContent], { type: "text/calendar" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "nicotheoweddingcelebrationday.ics";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// main
 const _assets = (async () => {
   const assets = await GetAssets();
   if (!assets) return;
@@ -136,6 +169,7 @@ const _assets = (async () => {
   if (assets.bg_image_page_11) bgImagePage10.push(...assets.bg_image_page_11);
   if (assets.bg_image_page_12) bgImagePage12.push(...assets.bg_image_page_12);
   if (assets.bg_image_page_14) bgImagePage14.push(...assets.bg_image_page_14);
+  if (assets.bg_music) bgMusic = assets.bg_music;
 })();
 
 _assets.then(() => {
@@ -214,7 +248,8 @@ _assets.then(() => {
       window.removeEventListener("touchmove", preventScroll, { passive: false });
 
       const audioPlayer = document.getElementById("page1-footer-audio-player");
-      audioPlayer.src = "https://github.com/Nicomnr02/nicotheo/raw/refs/heads/master/Household%20of%20Faith%20-%20Winner%20and%20Shen%20THE%20ASIDORS%202022%20COVERS%20Christian%20Wedding%20Song%20(1).mp3";
+      audioPlayer.src = bgMusic;
+      console.log("bgmusic: ", bgMusic);
       audioPlayer.play();
     }
     button.addEventListener("click", enableScrollOnce);
@@ -321,39 +356,6 @@ _assets.then(() => {
 
     updateCountdown();
     const timer = setInterval(updateCountdown, 1000);
-
-    //ics file
-    function downloadICS() {
-      const title = "Nicolas & Theofani Wedding Celebration";
-      const description = "Join us for our special day!";
-      const location = "Tanjungbalai Asahan, Sumatera Utara";
-      const startDate = "20250708T000000Z";
-      const endDate = "20250708T130000Z";
-
-      const icsContent = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "PRODID:-//YourOrganization//EN",
-        "BEGIN:VEVENT",
-        "UID:" + new Date().getTime() + "@nicotheoweddinginvitation.netlify.app",
-        "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z",
-        "DTSTART:" + startDate,
-        "DTEND:" + endDate,
-        "SUMMARY:" + title,
-        "DESCRIPTION:" + description,
-        "LOCATION:" + location,
-        "END:VEVENT",
-        "END:VCALENDAR",
-      ].join("\r\n");
-
-      const blob = new Blob([icsContent], { type: "text/calendar" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "nicotheoweddingcelebrationday.ics";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
   });
 
   preloadImages(bgImagePage8).then(() => {
