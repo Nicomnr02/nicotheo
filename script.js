@@ -151,6 +151,26 @@ function downloadICS() {
   link.click();
   document.body.removeChild(link);
 }
+function copyCardNumber(cardElement) {
+  const numberElement = cardElement.querySelector(".number");
+  const number = numberElement.innerText;
+  navigator.clipboard
+    .writeText(number)
+    .then(() => {
+      showToast("Card number copied!");
+    })
+    .catch((err) => {
+      console.error("Could not copy text: ", err);
+    });
+}
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
 
 // main
 const _assets = (async () => {
