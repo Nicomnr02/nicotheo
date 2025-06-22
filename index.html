@@ -19,10 +19,13 @@
   <!-- Intro Page -->
   <section class="page no-scroll page0" id="intro">
     <p>THE WEDDING OF</p>
-    <div class="page0-image-spinner" id="carousel-page-0"></div>
+    <video class="page0-intro-video" autoplay loop muted playsinline>
+      <source id="videoSource" src="https://nicomnr02.github.io/invitation-asset/intro_video.mp4" type="video/mp4"
+        preload="auto">
+      Your browser does not support the video tag.
+    </video>
     <p>NICOLAS & THEOFANI</p>
     <div id="page0-loading-text">Please wait..</div>
-
   </section>
 
   <!-- Page 1 -->
@@ -222,95 +225,67 @@
     </form>
     <div class="output" id="jsonOutput" style="display:none;"></div>
   </section>
+
+
+  <!-- Page 9 -->
+  <section class="page page9" id="page9">
+    <h1 class="page9-header"> Wishes</h1>
+    <div class="page9-pagination-controls">
+      <div class="page9-pagination-control-buttons">
+        <button class="page9-pagination-control-button" id="prevBtn">← Previous</button>
+        <button class="page9-pagination-control-button" id="nextBtn">Next →</button>
+      </div>
+      <div class="wishes-container" id="wishesContainer"></div>
+    </div>
+  </section>
+
+  <!-- Page 10 -->
+  <section class="page page10" id="page10">
+    <div class="page10-header-image"></div>
+    <h2 class="page10-header-text">Wedding Gift</h2>
+    <p class="page10-description">For those of you who want to give a token of love to the bride and groom, you can use
+      the account number below: </p> <br>
+    <div class="page10-bank-card-item">
+      <div class="page10-bank-card">
+        <div class="card" onclick="copyCardNumber(this)">
+          <div class="logo">BRI</div>
+          <div class="chip">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="number">3287 01035 282 533</div>
+          <div class="details">
+            <div class="name">Nicolas Raja Oloan Manurung</div>
+          </div>
+        </div>
+        <div class="toast" id="toast">Card number copied!</div>
+      </div>
+      <div class="page10-bank-card">
+        <div class="card" onclick="copyCardNumber(this)">
+          <div class="logo">BCA</div>
+          <div class="chip">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="number">865 056 8754</div>
+          <div class="details">
+            <div class="name">Theofani Arta Uli Sirait</div>
+          </div>
+        </div>
+        <div class="toast" id="toast">Card number copied!</div>
+      </div>
+    </div>
+
+  </section>
   <script src="script.js" defer></script>
 </body>
-
-<!-- Page 9 -->
-<section class="page page9" id="page9">
-  <h1 class="page9-header"> Wishes</h1>
-  <div class="page9-pagination-controls">
-    <div class="page9-pagination-control-buttons">
-      <button class="page9-pagination-control-button" id="prevBtn">← Previous</button>
-      <button class="page9-pagination-control-button" id="nextBtn">Next →</button>
-    </div>
-    <div class="wishes-container" id="wishesContainer"></div>
-  </div>
-</section>
-
-<!-- Page 10 -->
-<section class="page page10" id="page10">
-  <div class="page10-header-image"></div>
-  <h2 class="page10-header-text">Wedding Gift</h2>
-  <p class="page10-description">For those of you who want to give a token of love to the bride and groom, you can use
-    the account number below: </p> <br>
-  <div class="page10-bank-card-item">
-    <div class="page10-bank-card">
-      <div class="card" onclick="copyCardNumber(this)">
-        <div class="logo">BRI</div>
-        <div class="chip">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div class="number">3287 01035 282 533</div>
-        <div class="details">
-          <div class="name">Nicolas Raja Oloan Manurung</div>
-        </div>
-      </div>
-      <div class="toast" id="toast">Card number copied!</div>
-    </div>
-    <div class="page10-bank-card">
-      <div class="card" onclick="copyCardNumber(this)">
-        <div class="logo">BCA</div>
-        <div class="chip">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div class="number">865 056 8754</div>
-        <div class="details">
-          <div class="name">Theofani Arta Uli Sirait</div>
-        </div>
-      </div>
-      <div class="toast" id="toast">Card number copied!</div>
-    </div>
-    <!-- <div class="page10-bank-card-item">
-      <p class="page10-bank-card-username">Theofani Sirait</p>
-      <div class="page10-bank-card-detail">
-        <p class="page10-bank-card-detail-name">Bank BCA</p>
-        <p class="page10-bank-card-detail-number" id="account-number1">8650568754</p>
-      </div>
-      <div class="page10-copy-logo" onclick="copyToClipboard1()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-        </svg>
-      </div>
-    </div> -->
-
-    <!-- <div class="page10-bank-card-item">
-      <p class="page10-bank-card-username">Nicolas Raja</p>
-      <div class="page10-bank-card-detail">
-        <p class="page10-bank-card-detail-name">Bank BRI </p>
-        <p class="page10-bank-card-detail-number" id="account-number2">328701035282533</p>
-      </div>
-      <div class="page10-copy-logo" onclick="copyToClipboard2()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-        </svg>
-      </div>
-    </div> -->
-  </div>
-
-</section>
 
 </html>

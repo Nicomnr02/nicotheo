@@ -4,8 +4,19 @@ const imageCache = {};
 function preventScroll(e) {
   e.preventDefault();
 }
-window.addEventListener("wheel", preventScroll, { passive: false });
-window.addEventListener("touchmove", preventScroll, { passive: false });
+
+function enableScroll() {
+  window.removeEventListener("wheel", preventScroll, { passive: false });
+  window.removeEventListener("touchmove", preventScroll, { passive: false });
+}
+
+function disableScroll() {
+  window.addEventListener("wheel", preventScroll, { passive: false });
+  window.addEventListener("touchmove", preventScroll, { passive: false });
+}
+
+// Initially block scroll
+disableScroll();
 
 // collect assets
 let carouselImagePage0 = [];
@@ -23,6 +34,8 @@ let bgImagePage11 = [];
 let bgImagePage12 = [];
 let bgImagePage14 = [];
 let bgMusic = "";
+let introVideo = "";
+let page1Video = "";
 
 /* HELPER */
 async function preloadImages(urls) {
@@ -41,6 +54,51 @@ async function preloadImages(urls) {
       });
     })
   );
+}
+// Faster: preload only first image of page first
+async function preloadFirst(urls) {
+  if (!urls.length) return;
+  const first = urls[0];
+  if (imageCache[first]) return;
+
+  const img = new Image();
+  img.src = first;
+  imageCache[first] = img;
+
+  return new Promise((resolve) => {
+    img.onload = resolve;
+    img.onerror = resolve;
+  });
+}
+async function preloadImagesWithProgress(urls, onProgress) {
+  let loaded = 0;
+  const total = urls.length;
+
+  const promises = urls.map((url) => {
+    if (imageCache[url]) {
+      loaded++;
+      onProgress(Math.round((loaded / total) * 100));
+      return Promise.resolve(imageCache[url]);
+    }
+
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = url;
+      imageCache[url] = img;
+      img.onload = () => {
+        loaded++;
+        onProgress(Math.round((loaded / total) * 100));
+        resolve(img);
+      };
+      img.onerror = () => {
+        loaded++;
+        onProgress(Math.round((loaded / total) * 100));
+        resolve(null);
+      };
+    });
+  });
+
+  return Promise.all(promises);
 }
 async function FetchAsset() {
   const URL = "https://nicotheoweddingassetapi.vercel.app/api/";
@@ -190,45 +248,31 @@ const _assets = (async () => {
   if (assets.bg_image_page_12) bgImagePage12.push(...assets.bg_image_page_12);
   if (assets.bg_image_page_14) bgImagePage14.push(...assets.bg_image_page_14);
   if (assets.bg_music) bgMusic = assets.bg_music;
+  if (assets.intro_video) introVideo = assets.intro_video;
+  if (assets.page_1_video) page1Video = assets.page_1_video;
 })();
 
 _assets.then(() => {
   /* PAGE 0 */
-  preloadImages(carouselImagePage0).then(() => {
-    const page0 = document.getElementById("intro");
-    let cp2starting = 0;
-    const carouselPage0 = document.getElementById("carousel-page-0");
-
-    function playCarouselImagePage0() {
-      cp2starting = (cp2starting + 1) % carouselImagePage0.length;
-
-      var cached0 = imageCache[carouselImagePage0[cp2starting]];
-      if (cached0) {
-        carouselPage0.style.backgroundImage = `url("${cached0.src}")`;
-      } else {
-        carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
-      }
-    }
-    setInterval(playCarouselImagePage0, 500);
-
-    let percent = 0;
-    const loadingText = document.getElementById("page0-loading-text");
-
-    const interval = setInterval(() => {
-      percent++;
+  const page0 = document.getElementById("intro");
+  const loadingText = document.getElementById("page0-loading-text");
+  // Progress loader
+  let percent = 0;
+  const percentInterval = setInterval(() => {
+    percent++;
+    if (loadingText) {
       loadingText.textContent = `${percent}%`;
-      if (percent === 100) clearInterval(interval);
-    }, 50);
+    }
+    if (percent >= 100) clearInterval(percentInterval);
+  }, 30);
 
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        page0.classList.add("page0-hidden");
-        setTimeout(() => {
-          page0.style.display = "none";
-        }, 5000);
-      }, 6000);
-    });
-  });
+  setTimeout(() => {
+    page0.classList.add("page0-hidden");
+    setTimeout(() => {
+      page0.style.display = "none";
+      console.log("🚀 Page0 hidden");
+    }, 1000);
+  }, 3000);
 
   preloadImages(carouselImagePage1).then(() => {
     let cp1starting = 0;
@@ -261,18 +305,17 @@ _assets.then(() => {
     myDiv.textContent = "Dear, " + guestName;
 
     const button = document.getElementById("page1-footer-heartbeat-button");
-    function enableScrollOnce() {
+    button.addEventListener("click", () => {
       button.disabled = true;
       button.textContent = "Scroll Down ⬇";
-      window.removeEventListener("wheel", preventScroll, { passive: false });
-      window.removeEventListener("touchmove", preventScroll, { passive: false });
+
+      enableScroll(); // allow user to scroll
 
       const audioPlayer = document.getElementById("page1-footer-audio-player");
       audioPlayer.src = bgMusic;
       console.log("bgmusic: ", bgMusic);
       audioPlayer.play();
-    }
-    button.addEventListener("click", enableScrollOnce);
+    });
   });
 
   preloadImages(bgImagePage2).then(() => {
