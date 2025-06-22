@@ -275,23 +275,23 @@ _assets.then(() => {
   }, 3000);
 
   preloadImages(carouselImagePage1).then(() => {
-    let cp1starting = 0;
-    const carouselPage1 = document.getElementById("carousel-page-1");
-    function playCarouselImagePage1() {
-      carouselPage1.style.opacity = 0;
-      setTimeout(() => {
-        cp1starting = (cp1starting + 1) % carouselImagePage1.length;
+    // let cp1starting = 0;
+    // const carouselPage1 = document.getElementById("carousel-page-1");
+    // function playCarouselImagePage1() {
+    //   carouselPage1.style.opacity = 0;
+    //   setTimeout(() => {
+    //     cp1starting = (cp1starting + 1) % carouselImagePage1.length;
 
-        var cached1 = imageCache[carouselImagePage1[cp1starting]];
-        if (cached1) {
-          carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached1.src}")`;
-        } else {
-          carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
-        }
-        carouselPage1.style.opacity = 1;
-      }, 1000);
-    }
-    setInterval(playCarouselImagePage1, 5000);
+    //     var cached1 = imageCache[carouselImagePage1[cp1starting]];
+    //     if (cached1) {
+    //       carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached1.src}")`;
+    //     } else {
+    //       carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
+    //     }
+    //     carouselPage1.style.opacity = 1;
+    //   }, 1000);
+    // }
+    // setInterval(playCarouselImagePage1, 5000);
 
     const urlParams = new URLSearchParams(window.location.search);
     const paramGuestName = urlParams.get("guest_name");
