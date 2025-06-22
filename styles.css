@@ -11,7 +11,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   font-family: "Cormorant", serif;
   font-optical-sizing: auto;
 }
