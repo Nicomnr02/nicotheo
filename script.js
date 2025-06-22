@@ -1,10 +1,5 @@
 /* BEHAVIORS */
-window.addEventListener("load", () => {
-  const element = document.getElementById("intro");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-});
+const imageCache = {};
 
 function preventScroll(e) {
   e.preventDefault();
@@ -12,106 +7,141 @@ function preventScroll(e) {
 window.addEventListener("wheel", preventScroll, { passive: false });
 window.addEventListener("touchmove", preventScroll, { passive: false });
 
-const carouselImagePage0 = [
-  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/1.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/2.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/3.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/4.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/1.%20Loading%20Spinner%20Photos/5.webp",
-];
-
-const carouselImagePage1 = [
-  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/1.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/2.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/3.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/4.webp",
-  "https://nicotheoweddinginvitationasset.netlify.app/2.%20Introduction%20Photos/5.webp",
-];
-
-const bgImagePage2 = ["https://nicotheoweddinginvitationasset.netlify.app/3.%20Bible%20Verses%20Photo/1.webp"];
-
-const bgImagePage3 = ["https://nicotheoweddinginvitationasset.netlify.app/4.%20Groom%20Photo/1.webp"];
-
-const bgImagePage4 = ["https://nicotheoweddinginvitationasset.netlify.app/5.%20Bride%20Photo/1.webp"];
-
-const bgImagePage5 = ["https://nicotheoweddinginvitationasset.netlify.app/6.%20Love%20Journey%20Photo/1.webp"];
-
-const bgImagePage6 = ["https://nicotheoweddinginvitationasset.netlify.app/7.%20Save%20The%20Date%20Photo/1.webp"];
-
-const bgImagePage7 = ["https://nicotheoweddinginvitationasset.netlify.app/8.%20Marriage%20Countdown%20Photo/1.webp"];
-
-const bgImagePage8 = ["https://nicotheoweddinginvitationasset.netlify.app/9.%20Wishes%20Form%20Photo/1.webp"];
-
-const bgImagePage9 = ["https://nicotheoweddinginvitationasset.netlify.app/10.%20Wishes%20List%20Photo/1.webp"];
-
-const bgImagePage10 = ["https://nicotheoweddinginvitationasset.netlify.app/11.%20Wedding%20Gift%20Photo/1.webp", "https://assets.apps-madhani.com/ess/user/yXhf603.jpg"];
+// collect assets
+let carouselImagePage0 = [];
+let carouselImagePage1 = [];
+let bgImagePage2 = [];
+let bgImagePage3 = [];
+let bgImagePage4 = [];
+let bgImagePage5 = [];
+let bgImagePage6 = [];
+let bgImagePage7 = [];
+let bgImagePage8 = [];
+let bgImagePage9 = [];
+let bgImagePage10 = [];
+let bgImagePage11 = [];
+let bgImagePage12 = [];
+let bgImagePage14 = [];
 
 // Preload images function
-const imageCache = {};
-const images = [...carouselImagePage0, ...carouselImagePage1, ...bgImagePage2, ...bgImagePage3, ...bgImagePage4, ...bgImagePage5, ...bgImagePage6, ...bgImagePage7, ...bgImagePage8, ...bgImagePage9, ...bgImagePage10];
-function preloadImages(urls, callback) {
-  let loadedCount = 0;
-  const total = urls.length;
+async function preloadImages(urls) {
+  return Promise.allSettled(
+    urls.map((url) => {
+      if (imageCache[url]) return Promise.resolve(imageCache[url]);
 
-  urls.forEach((url) => {
-    // Check if image has already been cached
-    if (imageCache[url]) {
-      loadedCount++;
-      if (loadedCount === total) {
-        callback(); // Callback once all images are "loaded"
-      }
-      return; // Skip loading if already cached
-    }
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = url;
 
-    const img = new Image(); // Create new image object
-    img.src = url; // Set the image source
+        imageCache[url] = img;
 
-    // Cache the image object
-    imageCache[url] = img;
-
-    // When image is loaded, update the count and check if all are loaded
-    img.onload = () => {
-      loadedCount++;
-      if (loadedCount === total) {
-        callback(); // Call the callback once all images are loaded
-      }
-    };
-
-    // If there's an error loading the image, still count it
-    img.onerror = () => {
-      loadedCount++;
-      if (loadedCount === total) {
-        callback(); // Call the callback if any image fails
-      }
-    };
-  });
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+      });
+    })
+  );
 }
+async function FetchAsset() {
+  const URL = "https://nicotheoweddingassetapi.vercel.app/api/";
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-function main() {
-  function Fade(id) {
-    const container = document.getElementById(id);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            container.classList.remove("fade-in");
-            container.classList.add("fade-out");
-            setTimeout(() => {
-              container.classList.remove("fade-out");
-              container.classList.add("fade-in");
-            }, 500);
-          }
-        });
-      },
-      {
-        threshold: 0.3,
-      }
-    );
-    observer.observe(container);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch assets data:", error);
+    return null;
+  }
+}
+async function GetAssets() {
+  const expiredKey = "nico-fani-wedding-assets-expired-time";
+  const assetsKey = "nico-fani-wedding-assets-last-retrieving";
+
+  const now = new Date();
+  const newExpiredTime = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString();
+
+  const refreshAsset = async () => {
+    const data = await FetchAsset();
+    if (data) {
+      localStorage.setItem(assetsKey, JSON.stringify(data));
+    }
+    return data;
+  };
+
+  const refreshExpired = () => {
+    localStorage.setItem(expiredKey, newExpiredTime);
+  };
+
+  let expiredTime = localStorage.getItem(expiredKey);
+  if (!expiredTime) {
+    expiredTime = newExpiredTime;
+    refreshExpired();
   }
 
+  let assets = localStorage.getItem(assetsKey);
+  const hasExpired = new Date(expiredTime) <= now;
+
+  if (!assets || hasExpired) {
+    refreshExpired();
+    return await refreshAsset();
+  }
+
+  try {
+    return JSON.parse(assets);
+  } catch (err) {
+    console.error("Failed to parse local asset data:", err);
+    return await refreshAsset();
+  }
+}
+function Fade(id) {
+  const container = document.getElementById(id);
+  if (!container) {
+    console.warn(`Fade: element with id "${id}" not found.`);
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          container.classList.remove("fade-in");
+          container.classList.add("fade-out");
+          setTimeout(() => {
+            container.classList.remove("fade-out");
+            container.classList.add("fade-in");
+          }, 500);
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    }
+  );
+  observer.observe(container);
+}
+
+const _assets = (async () => {
+  const assets = await GetAssets();
+  if (!assets) return;
+  if (assets.carousel_image_page_0) carouselImagePage0.push(...assets.carousel_image_page_0);
+  if (assets.carousel_image_page_1) carouselImagePage1.push(...assets.carousel_image_page_1);
+  if (assets.bg_image_page_2) bgImagePage2.push(...assets.bg_image_page_2);
+  if (assets.bg_image_page_3) bgImagePage3.push(...assets.bg_image_page_3);
+  if (assets.bg_image_page_4) bgImagePage4.push(...assets.bg_image_page_4);
+  if (assets.bg_image_page_5) bgImagePage5.push(...assets.bg_image_page_5);
+  if (assets.bg_image_page_6) bgImagePage6.push(...assets.bg_image_page_6);
+  if (assets.bg_image_page_7) bgImagePage7.push(...assets.bg_image_page_7);
+  if (assets.bg_image_page_8) bgImagePage8.push(...assets.bg_image_page_8);
+  if (assets.bg_image_page_9) bgImagePage9.push(...assets.bg_image_page_9);
+  if (assets.bg_image_page_10) bgImagePage10.push(...assets.bg_image_page_10);
+  if (assets.bg_image_page_11) bgImagePage11.push(...assets.bg_image_page_11);
+  if (assets.bg_image_page_12) bgImagePage12.push(...assets.bg_image_page_12);
+  if (assets.bg_image_page_14) bgImagePage14.push(...assets.bg_image_page_14);
+})();
+
+_assets.then(() => {
   /* PAGE 0 */
-  {
+  preloadImages(carouselImagePage0).then(() => {
     const page0 = document.getElementById("intro");
     let cp2starting = 0;
     const carouselPage0 = document.getElementById("carousel-page-0");
@@ -120,14 +150,13 @@ function main() {
       cp2starting = (cp2starting + 1) % carouselImagePage0.length;
 
       var cached0 = imageCache[carouselImagePage0[cp2starting]];
-      console.log("hereeee", cached0.src);
       if (cached0) {
         carouselPage0.style.backgroundImage = `url("${cached0.src}")`;
       } else {
         carouselPage0.style.backgroundImage = `url("${carouselImagePage0[cp2starting]}")`;
       }
     }
-    setInterval(playCarouselImagePage0, 100);
+    setInterval(playCarouselImagePage0, 500);
 
     let percent = 0;
     const loadingText = document.getElementById("page0-loading-text");
@@ -143,13 +172,12 @@ function main() {
         page0.classList.add("page0-hidden");
         setTimeout(() => {
           page0.style.display = "none";
-        }, 1000);
+        }, 5000);
       }, 6000);
     });
-  }
+  });
 
-  /* PAGE 1 */
-  {
+  preloadImages(carouselImagePage1).then(() => {
     let cp1starting = 0;
     const carouselPage1 = document.getElementById("carousel-page-1");
     function playCarouselImagePage1() {
@@ -164,7 +192,7 @@ function main() {
           carouselPage1.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${carouselImagePage1[cp1starting]}")`;
         }
         carouselPage1.style.opacity = 1;
-      }, 2000);
+      }, 1000);
     }
     setInterval(playCarouselImagePage1, 5000);
 
@@ -191,10 +219,9 @@ function main() {
       audioPlayer.play();
     }
     button.addEventListener("click", enableScrollOnce);
-  }
+  });
 
-  /* PAGE 2 */
-  {
+  preloadImages(bgImagePage2).then(() => {
     const page2 = document.getElementById("page2");
     var cached2 = imageCache[bgImagePage2[0]];
     if (cached2) {
@@ -204,10 +231,9 @@ function main() {
     }
 
     Fade("page2-bible-quotation-chapter-fade-target");
-  }
+  });
 
-  /* PAGE 3 */
-  {
+  preloadImages(bgImagePage3).then(() => {
     const page3 = document.getElementById("page3");
     var cached3 = imageCache[bgImagePage3[0]];
     if (cached3) {
@@ -221,10 +247,9 @@ function main() {
     Fade("page3-groom-fade-target3");
     Fade("page3-groom-fade-target4");
     Fade("page3-groom-fade-target5");
-  }
+  });
 
-  /* PAGE 4 */
-  {
+  preloadImages(bgImagePage4).then(() => {
     const page4 = document.getElementById("page4");
     var cached4 = imageCache[bgImagePage4[0]];
     if (cached4) {
@@ -238,10 +263,9 @@ function main() {
     Fade("page4-groom-fade-target3");
     Fade("page4-groom-fade-target4");
     Fade("page4-groom-fade-target5");
-  }
+  });
 
-  /* PAGE 5 */
-  {
+  preloadImages(bgImagePage5).then(() => {
     const page5 = document.getElementById("page5");
     var cached5 = imageCache[bgImagePage5[0]];
     if (cached5) {
@@ -253,10 +277,9 @@ function main() {
     Fade("page5-content-fade-target1");
     Fade("page5-content-fade-target2");
     Fade("page5-content-fade-target3");
-  }
+  });
 
-  /* PAGE 6 */
-  {
+  preloadImages(bgImagePage6).then(() => {
     const page6 = document.getElementById("page6");
     var cached6 = imageCache[bgImagePage6[0]];
     if (cached6) {
@@ -264,10 +287,8 @@ function main() {
     } else {
       page6.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage6[0]}")`;
     }
-  }
-
-  /* PAGE 7 */
-  {
+  });
+  preloadImages(bgImagePage7).then(() => {
     const page7 = document.getElementById("page7");
     var cached7 = imageCache[bgImagePage7[0]];
     if (cached7) {
@@ -334,10 +355,9 @@ function main() {
       link.click();
       document.body.removeChild(link);
     }
-  }
+  });
 
-  /* PAGE 8 */
-  {
+  preloadImages(bgImagePage8).then(() => {
     const page8 = document.getElementById("page8");
     var cached8 = imageCache[bgImagePage8[0]];
     if (cached8) {
@@ -377,128 +397,131 @@ function main() {
 
       document.getElementById("wishForm").reset();
     });
-  }
+  });
 
-  /* Page 9 */
-
-  const page9 = document.getElementById("page9");
-  var cached9 = imageCache[bgImagePage9[0]];
-  if (cached9) {
-    page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached9.src}")`;
-  } else {
-    page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage9[0]}")`;
-  }
-
-  let wishes = [];
-  let currentPage = 0;
-  const pageSize = 2;
-
-  const wishesContainer = document.getElementById("wishesContainer");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-
-  async function fetchWishes() {
-    console.log("Fetching wishes...");
-    try {
-      const res = await fetch("https://68370b61664e72d28e4343a2.mockapi.io/api/v1/wish");
-      wishes = (await res.json()).reverse(); // Most recent first
-      console.log("Fetched wishes:", wishes);
-      renderPage();
-    } catch (err) {
-      wishesContainer.innerHTML = "<p style='color: red;'>Failed to load wishes.</p>";
-      console.error("Error fetching wishes:", err);
+  preloadImages(bgImagePage9).then(() => {
+    const page9 = document.getElementById("page9");
+    var cached9 = imageCache[bgImagePage9[0]];
+    if (cached9) {
+      page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached9.src}")`;
+    } else {
+      page9.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage9[0]}")`;
     }
-  }
 
-  function renderPage() {
-    wishesContainer.innerHTML = "";
-    const start = currentPage * pageSize;
-    const end = start + pageSize;
-    const currentItems = wishes.slice(start, end);
+    let wishes = [];
+    let currentPage = 0;
+    const pageSize = 2;
 
-    currentItems.forEach((item, index) => {
-      const card = document.createElement("div");
-      card.className = `wish-card ${index % 2 === 0 ? "left" : "right"}`;
-      card.innerHTML = `
+    const wishesContainer = document.getElementById("wishesContainer");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    async function fetchWishes() {
+      console.log("Fetching wishes...");
+      try {
+        const res = await fetch("https://68370b61664e72d28e4343a2.mockapi.io/api/v1/wish");
+        wishes = (await res.json()).reverse(); // Most recent first
+        console.log("Fetched wishes:", wishes);
+        renderPage();
+      } catch (err) {
+        wishesContainer.innerHTML = "<p style='color: red;'>Failed to load wishes.</p>";
+        console.error("Error fetching wishes:", err);
+      }
+    }
+
+    function renderPage() {
+      wishesContainer.innerHTML = "";
+      const start = currentPage * pageSize;
+      const end = start + pageSize;
+      const currentItems = wishes.slice(start, end);
+
+      currentItems.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = `wish-card ${index % 2 === 0 ? "left" : "right"}`;
+        card.innerHTML = `
       <h3 class="single-line-ellipsis">${item.name}</h3>
       <p class="wish-text">${item.wish}</p>
       <p class="wish-date">${new Date(item.created_at * 1000).toLocaleString()}</p>
     `;
-      wishesContainer.appendChild(card);
+        wishesContainer.appendChild(card);
+      });
+
+      if (currentPage == 0) {
+        prevBtn.innerHTML = ``;
+      } else {
+        prevBtn.innerHTML = `<button class="page9-pagination-control-button" id="prevBtn">← Previous</button>`;
+      }
+      nextBtn.disabled = end >= wishes.length;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 0) {
+        currentPage--;
+        renderPage();
+      }
     });
 
-    if (currentPage == 0) {
-      prevBtn.innerHTML = ``;
+    nextBtn.addEventListener("click", () => {
+      if ((currentPage + 1) * pageSize < wishes.length) {
+        currentPage++;
+        renderPage();
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", fetchWishes);
+
+    {
+      const wishesPage = document.querySelector(".page9");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              fetchWishes();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      observer.observe(wishesPage);
+    }
+  });
+
+  preloadImages(bgImagePage10).then(() => {
+    const page10 = document.getElementById("page10");
+    var cached10 = imageCache[bgImagePage10[0]];
+    if (cached10) {
+      page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached10.src}")`;
     } else {
-      prevBtn.innerHTML = `<button class="page9-pagination-control-button" id="prevBtn">← Previous</button>`;
+      page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage10[0]}")`;
     }
-    nextBtn.disabled = end >= wishes.length;
-  }
 
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 0) {
-      currentPage--;
-      renderPage();
-    }
-  });
-
-  nextBtn.addEventListener("click", () => {
-    if ((currentPage + 1) * pageSize < wishes.length) {
-      currentPage++;
-      renderPage();
-    }
-  });
-
-  window.addEventListener("DOMContentLoaded", fetchWishes);
-
-  {
-    const wishesPage = document.querySelector(".page9");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            fetchWishes();
-          }
+    function copyToClipboard1() {
+      const text = document.getElementById("account-number1").innerText;
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          alert("Copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy:", err);
         });
-      },
-      { threshold: 0.5 }
-    );
+    }
+    function copyToClipboard2() {
+      const text = document.getElementById("account-number2").innerText;
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          alert("Copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy:", err);
+        });
+    }
+  });
 
-    observer.observe(wishesPage);
-  }
-
-  /* Page 10 */
-  const page10 = document.getElementById("page10");
-  var cached10 = imageCache[bgImagePage10[0]];
-  if (cached10) {
-    page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${cached10.src}")`;
-  } else {
-    page10.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${bgImagePage10[0]}")`;
-  }
-
-  function copyToClipboard1() {
-    const text = document.getElementById("account-number1").innerText;
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        alert("Copied to clipboard!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy:", err);
-      });
-  }
-  function copyToClipboard2() {
-    const text = document.getElementById("account-number2").innerText;
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        alert("Copied to clipboard!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy:", err);
-      });
-  }
-}
-
-preloadImages(images, main);
+  preloadImages(bgImagePage11).then(() => {});
+  preloadImages(bgImagePage12).then(() => {});
+  preloadImages(bgImagePage14).then(() => {});
+});
