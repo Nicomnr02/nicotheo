@@ -11,7 +11,8 @@ const lenis = new Lenis({
   smoothTouch: true,
   lerp: 0.05,
   normalizeScroll: true,
-  snap: true,
+
+  // snap: true,
 });
 
 lenis.stop();
