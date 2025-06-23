@@ -11,7 +11,6 @@ html {
   -ms-overflow-style: none;
   font-family: "Cormorant", serif;
   font-optical-sizing: auto;
-  overflow-y: scroll;
 }
 
 .fade-in {
@@ -346,7 +345,7 @@ html {
   top: 0;
   left: 0;
   width: 110%;
-  height: 100vh;
+  height: 120vh;
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */

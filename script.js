@@ -1,30 +1,17 @@
 /* BEHAVIORS */
 const imageCache = {};
 
-function preventScroll(e) {
-  e.preventDefault();
-}
-
-function enableScroll() {
-  window.removeEventListener("wheel", preventScroll, { passive: false });
-  window.removeEventListener("touchmove", preventScroll, { passive: false });
-}
-
-function disableScroll() {
-  window.addEventListener("wheel", preventScroll, { passive: false });
-  window.addEventListener("touchmove", preventScroll, { passive: false });
-}
-
 // Initially block scroll
-disableScroll();
 
 const lenis = new Lenis({
-  duration: 1.2,
+  duration: 0.8,
   smooth: true,
   direction: "vertical",
   gestureDirection: "vertical",
   smoothTouch: true,
 });
+
+lenis.stop();
 
 function raf(time) {
   lenis.raf(time);
@@ -34,15 +21,6 @@ requestAnimationFrame(raf);
 
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
-});
-
-ScrollTrigger.defaults({
-  markers: false,
-  snap: {
-    snapTo: 1, // snap to closest section
-    duration: 0.8,
-    ease: "power1.inOut",
-  },
 });
 
 // collect assets
@@ -280,6 +258,21 @@ const _assets = (async () => {
 })();
 
 _assets.then(() => {
+  document.querySelectorAll(".page").forEach((page) => {
+    ScrollTrigger.create({
+      trigger: page,
+      start: "top top",
+      end: "bottom bottom",
+      snap: {
+        snapTo: (progress) => {
+          return Math.round(progress); // snap to full section
+        },
+        duration: 1.2,
+        ease: "power3.out",
+      },
+    });
+  });
+
   /* PAGE 0 */
   const page0 = document.getElementById("intro");
   const loadingText = document.getElementById("page0-loading-text");
@@ -317,7 +310,7 @@ _assets.then(() => {
     button.disabled = true;
     button.textContent = "Scroll Down ⬇";
 
-    enableScroll(); // allow user to scroll
+    lenis.start();
 
     const audioPlayer = document.getElementById("page1-footer-audio-player");
     audioPlayer.src = bgMusic;
