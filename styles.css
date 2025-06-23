@@ -67,6 +67,7 @@ html {
 
 .page0-hidden {
   opacity: 0;
+  pointer-events: none;
 }
 
 .no-scroll {
