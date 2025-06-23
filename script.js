@@ -4,7 +4,7 @@ const imageCache = {};
 // Initially block scroll
 
 const lenis = new Lenis({
-  duration: 0.8,
+  duration: 0.5,
   smooth: true,
   direction: "vertical",
   gestureDirection: "vertical",
@@ -18,10 +18,6 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
-
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
 
 // collect assets
 let carouselImagePage0 = [];
@@ -263,13 +259,7 @@ _assets.then(() => {
       trigger: page,
       start: "top top",
       end: "bottom bottom",
-      snap: {
-        snapTo: (progress) => {
-          return Math.round(progress); // snap to full section
-        },
-        duration: 1.2,
-        ease: "power3.out",
-      },
+      snap: 1 / (document.querySelectorAll(".page").length - 1),
     });
   });
 
