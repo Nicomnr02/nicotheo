@@ -22,31 +22,46 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 function enableScrollSnap() {
+  const pages = gsap.utils.toArray(".page");
+  const totalPages = pages.length;
+
   ScrollTrigger.scrollerProxy(document.body, {
     scrollTop(value) {
       return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll.instance.scroll.y;
     },
     getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
     },
   });
 
   lenis.on("scroll", ScrollTrigger.update);
-  ScrollTrigger.refresh();
 
-  document.querySelectorAll(".page").forEach((page) => {
+  setTimeout(() => {
     ScrollTrigger.create({
-      trigger: page,
+      trigger: document.body,
       start: "top top",
       end: "bottom bottom",
       snap: {
-        snapTo: 1, // snap ke 100% section
-        duration: 1.5, // durasi transisi snap
-        ease: "power2.out", // easing agar tidak nyentak
-        delay: 0.05, // tunggu sebentar sebelum snap
+        snapTo: (progress) => {
+          const snappedIndex = Math.round(progress * (totalPages - 1));
+          const targetOffset = pages[snappedIndex].offsetTop;
+          return targetOffset;
+        },
+        duration: 1.2,
+        ease: "expo.out",
+        delay: 0.1,
       },
+      // optional
+      // markers: true
     });
-  });
+
+    ScrollTrigger.refresh();
+  }, 100);
 }
 
 gsap.utils.toArray(".fade-target").forEach((target) => {
@@ -301,15 +316,6 @@ const _assets = (async () => {
 })();
 
 _assets.then(() => {
-  document.querySelectorAll(".page").forEach((page) => {
-    ScrollTrigger.create({
-      trigger: page,
-      start: "top top",
-      end: "bottom bottom",
-      snap: 1 / (document.querySelectorAll(".page").length - 1),
-    });
-  });
-
   /* PAGE 0 */
   const page0 = document.getElementById("intro");
   const loadingText = document.getElementById("page0-loading-text");
