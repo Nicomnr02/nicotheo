@@ -12,7 +12,7 @@ const lenis = new Lenis({
   lerp: 0.05,
   normalizeScroll: true,
 
-  // snap: true,
+  snap: true,
 });
 
 lenis.stop();
