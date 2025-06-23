@@ -11,6 +11,7 @@ const lenis = new Lenis({
   smoothTouch: true,
   lerp: 0.05,
   normalizeScroll: true,
+  snap: true,
 });
 
 lenis.stop();
@@ -22,46 +23,42 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 function enableScrollSnap() {
-  const pages = gsap.utils.toArray(".page");
-  const totalPages = pages.length;
-
-  ScrollTrigger.scrollerProxy(document.body, {
-    scrollTop(value) {
-      return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-  });
-
-  lenis.on("scroll", ScrollTrigger.update);
-
-  setTimeout(() => {
-    ScrollTrigger.create({
-      trigger: document.body,
-      start: "top top",
-      end: "bottom bottom",
-      snap: {
-        snapTo: (progress) => {
-          const snappedIndex = Math.round(progress * (totalPages - 1));
-          const targetOffset = pages[snappedIndex].offsetTop;
-          return targetOffset;
-        },
-        duration: 1.2,
-        ease: "expo.out",
-        delay: 0.1,
-      },
-      // optional
-      // markers: true
-    });
-
-    ScrollTrigger.refresh();
-  }, 100);
+  // const pages = gsap.utils.toArray(".page");
+  // const totalPages = pages.length;
+  // ScrollTrigger.scrollerProxy(document.body, {
+  //   scrollTop(value) {
+  //     return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll.instance.scroll.y;
+  //   },
+  //   getBoundingClientRect() {
+  //     return {
+  //       top: 0,
+  //       left: 0,
+  //       width: window.innerWidth,
+  //       height: window.innerHeight,
+  //     };
+  //   },
+  // });
+  // lenis.on("scroll", ScrollTrigger.update);
+  // setTimeout(() => {
+  //   ScrollTrigger.create({
+  //     trigger: document.body,
+  //     start: "top top",
+  //     end: "bottom bottom",
+  //     snap: {
+  //       snapTo: (progress) => {
+  //         const snappedIndex = Math.round(progress * (totalPages - 1));
+  //         const targetOffset = pages[snappedIndex].offsetTop;
+  //         return targetOffset;
+  //       },
+  //       duration: 1.2,
+  //       ease: "expo.out",
+  //       delay: 0.1,
+  //     },
+  //     // optional
+  //     // markers: true
+  //   });
+  //   ScrollTrigger.refresh();
+  // }, 100);
 }
 
 gsap.utils.toArray(".fade-target").forEach((target) => {
