@@ -15,8 +15,8 @@ const lenis = new Lenis({
   snap: true,
 });
 
-lenis.stop();
-
+/* lenis.stop();
+ */
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -352,8 +352,8 @@ _assets.then(() => {
     button.disabled = true;
     button.textContent = "Scroll Down ⬇";
 
-    lenis.start();
-
+/*     lenis.start();
+ */
     const audioPlayer = document.getElementById("page1-footer-audio-player");
     audioPlayer.src = bgMusic;
     console.log("bgmusic: ", bgMusic);
