@@ -46,6 +46,23 @@ function enableScrollSnap() {
   });
 }
 
+gsap.utils.toArray(".fade-target").forEach((target) => {
+  gsap.fromTo(
+    target,
+    { opacity: 0, y: 20 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: target,
+        start: "top 80%", // bisa disesuaikan
+        toggleActions: "play none none none",
+      },
+    }
+  );
+});
+
 // collect assets
 let carouselImagePage0 = [];
 let carouselImagePage1 = [];
@@ -182,29 +199,29 @@ async function GetAssets() {
   }
 }
 function Fade(id) {
-  const container = document.getElementById(id);
-  if (!container) {
-    console.warn(`Fade: element with id "${id}" not found.`);
-    return;
-  }
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          container.classList.remove("fade-in");
-          container.classList.add("fade-out");
-          setTimeout(() => {
-            container.classList.remove("fade-out");
-            container.classList.add("fade-in");
-          }, 500);
-        }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
-  observer.observe(container);
+  // const container = document.getElementById(id);
+  // if (!container) {
+  //   console.warn(`Fade: element with id "${id}" not found.`);
+  //   return;
+  // }
+  // const observer = new IntersectionObserver(
+  //   (entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         container.classList.remove("fade-in");
+  //         container.classList.add("fade-out");
+  //         setTimeout(() => {
+  //           container.classList.remove("fade-out");
+  //           container.classList.add("fade-in");
+  //         }, 500);
+  //       }
+  //     });
+  //   },
+  //   {
+  //     threshold: 0.3,
+  //   }
+  // );
+  // observer.observe(container);
 }
 function downloadICS() {
   const title = "Nicolas & Theofani Wedding Celebration";
