@@ -19,6 +19,33 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
+function enableScrollSnap() {
+  ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+      return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    },
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+  ScrollTrigger.refresh();
+
+  document.querySelectorAll(".page").forEach((page) => {
+    ScrollTrigger.create({
+      trigger: page,
+      start: "top top",
+      end: "bottom bottom",
+      snap: {
+        snapTo: 1,
+        duration: 1,
+        ease: "power1.inOut",
+      },
+    });
+  });
+}
+
 // collect assets
 let carouselImagePage0 = [];
 let carouselImagePage1 = [];
@@ -279,6 +306,7 @@ _assets.then(() => {
     page0.classList.add("page0-hidden");
     setTimeout(() => {
       page0.style.display = "none";
+      enableScrollSnap();
       console.log("🚀 Page0 hidden");
     }, 1000);
   }, 4500);
