@@ -16,9 +16,11 @@ html {
 .fade-in {
   transition: opacity 1s ease;
   opacity: 1;
+  will-change: opacity;
 }
 .fade-out {
   opacity: 0;
+  will-change: opacity;
 }
 
 .page {
@@ -123,7 +125,7 @@ html {
   height: 100vh;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
 }
 
 .page1-header {
@@ -201,7 +203,7 @@ html {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 
@@ -245,7 +247,7 @@ html {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page3-groom-name {
@@ -297,7 +299,7 @@ html {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page4-bride-name {
@@ -349,7 +351,7 @@ html {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 
@@ -377,7 +379,7 @@ html {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page6-save-our-date {
@@ -441,7 +443,7 @@ html {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page7-header {
@@ -501,7 +503,7 @@ html {
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page8-form {
@@ -566,7 +568,7 @@ button {
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page9-pagination-control-buttons {
@@ -629,7 +631,7 @@ button {
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page10-bank-card {
