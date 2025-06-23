@@ -11,9 +11,10 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   font-family: "Cormorant", serif;
   font-optical-sizing: auto;
+  overflow-y: scroll;
 }
 
 .fade-in {
@@ -44,7 +45,8 @@ html {
   align-items: center;
   gap: 3vh;
   color: white;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   object-fit: cover;
 }
 .page0-intro-video {
@@ -115,7 +117,8 @@ html {
   color: white;
   width: 100%;
   justify-content: space-around;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
 }
 
 .page1-bg-video {
@@ -191,7 +194,8 @@ html {
   text-align: justify;
   background-size: cover;
   transition: opacity 2s ease;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   overflow: hidden;
 }
 
@@ -231,7 +235,8 @@ html {
 }
 
 .page3 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   overflow: hidden;
   display: flex;
   background-size: cover;
@@ -282,7 +287,8 @@ html {
 }
 
 .page4 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -334,7 +340,8 @@ html {
 }
 
 .page5 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   background-size: cover;
   overflow: hidden;
   display: flex;
@@ -361,7 +368,8 @@ html {
 }
 
 .page6 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -425,7 +433,8 @@ html {
 }
 
 .page7 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   background-size: cover;
   display: flex;
   overflow: hidden;
@@ -485,7 +494,8 @@ html {
 }
 
 .page8 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -550,7 +560,8 @@ button {
 
 /* Page 9 */
 .page9 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -613,7 +624,8 @@ button {
 
 /* Page 10 */
 .page10 {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  will-change: transform;
   background-size: cover;
   display: flex;
   background-size: cover;
