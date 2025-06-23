@@ -11,6 +11,9 @@ html {
   -ms-overflow-style: none;
   font-family: "Cormorant", serif;
   font-optical-sizing: auto;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  scroll-behavior: auto;
 }
 
 .fade-in {
@@ -31,7 +34,13 @@ html {
   flex-direction: column;
   justify-content: center;
   visibility: visible;
-  contain: layout paint;
+}
+
+.page img,
+.page video,
+.fade-in,
+.fade-out {
+  transform: translateZ(0);
 }
 
 .page0 {

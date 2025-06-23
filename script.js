@@ -9,6 +9,7 @@ const lenis = new Lenis({
   direction: "vertical",
   gestureDirection: "vertical",
   smoothTouch: true,
+  lerp: 0.1,
 });
 
 lenis.stop();
