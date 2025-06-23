@@ -18,6 +18,33 @@ function disableScroll() {
 // Initially block scroll
 disableScroll();
 
+const lenis = new Lenis({
+  duration: 1.2,
+  smooth: true,
+  direction: "vertical",
+  gestureDirection: "vertical",
+  smoothTouch: true,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
+ScrollTrigger.defaults({
+  markers: false,
+  snap: {
+    snapTo: 1, // snap to closest section
+    duration: 0.8,
+    ease: "power1.inOut",
+  },
+});
+
 // collect assets
 let carouselImagePage0 = [];
 let carouselImagePage1 = [];

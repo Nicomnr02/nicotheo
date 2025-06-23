@@ -7,11 +7,8 @@
 
 body,
 html {
-  height: 100%;
-  scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
-  scroll-snap-type: y proximity;
   font-family: "Cormorant", serif;
   font-optical-sizing: auto;
   overflow-y: scroll;
@@ -27,7 +24,7 @@ html {
 
 .page {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -46,7 +43,7 @@ html {
   align-items: center;
   gap: 3vh;
   color: white;
-  scroll-snap-align: start;
+
   object-fit: cover;
 }
 .page0-intro-video {
@@ -117,7 +114,6 @@ html {
   color: white;
   width: 100%;
   justify-content: space-around;
-  scroll-snap-align: start;
 }
 
 .page1-bg-video {
@@ -193,7 +189,7 @@ html {
   text-align: justify;
   background-size: cover;
   transition: opacity 2s ease;
-  scroll-snap-align: start;
+
   overflow: hidden;
 }
 
@@ -207,6 +203,7 @@ html {
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 
 .page2-bible-quotation {
@@ -233,7 +230,6 @@ html {
 }
 
 .page3 {
-  scroll-snap-align: start;
   overflow: hidden;
   display: flex;
   background-size: cover;
@@ -251,6 +247,7 @@ html {
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 .page3-groom-name {
   font-size: xx-large;
@@ -284,7 +281,6 @@ html {
 }
 
 .page4 {
-  scroll-snap-align: start;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -303,6 +299,7 @@ html {
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 .page4-bride-name {
   font-size: xx-large;
@@ -336,7 +333,6 @@ html {
 }
 
 .page5 {
-  scroll-snap-align: start;
   background-size: cover;
   overflow: hidden;
   display: flex;
@@ -355,6 +351,7 @@ html {
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 
 .page5-journey {
@@ -363,7 +360,6 @@ html {
 }
 
 .page6 {
-  scroll-snap-align: start;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -383,6 +379,7 @@ html {
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 .page6-save-our-date {
   font-size: small;
@@ -427,7 +424,6 @@ html {
 }
 
 .page7 {
-  scroll-snap-align: start;
   background-size: cover;
   display: flex;
   overflow: hidden;
@@ -447,6 +443,7 @@ html {
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 .page7-header {
   text-align: center;
@@ -487,7 +484,6 @@ html {
 }
 
 .page8 {
-  scroll-snap-align: start;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -507,6 +503,7 @@ html {
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 .page8-form {
   display: flex;
@@ -552,7 +549,6 @@ button {
 
 /* Page 9 */
 .page9 {
-  scroll-snap-align: start;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -572,6 +568,7 @@ button {
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 .page9-pagination-control-buttons {
   display: flex;
@@ -615,7 +612,6 @@ button {
 
 /* Page 10 */
 .page10 {
-  scroll-snap-align: start;
   background-size: cover;
   display: flex;
   background-size: cover;
@@ -635,6 +631,7 @@ button {
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
   filter: brightness(80%);
+  pointer-events: none;
 }
 .page10-bank-card {
   display: flex;
