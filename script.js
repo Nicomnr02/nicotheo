@@ -9,7 +9,8 @@ const lenis = new Lenis({
   direction: "vertical",
   gestureDirection: "vertical",
   smoothTouch: true,
-  lerp: 0.1,
+  lerp: 0.05,
+  normalizeScroll: true,
 });
 
 lenis.stop();
@@ -39,9 +40,10 @@ function enableScrollSnap() {
       start: "top top",
       end: "bottom bottom",
       snap: {
-        snapTo: 1,
-        duration: 1,
-        ease: "power1.inOut",
+        snapTo: 1, // snap ke 100% section
+        duration: 1.5, // durasi transisi snap
+        ease: "power2.out", // easing agar tidak nyentak
+        delay: 0.05, // tunggu sebentar sebelum snap
       },
     });
   });
