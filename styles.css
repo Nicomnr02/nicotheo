@@ -19,7 +19,7 @@ html {
   -ms-overflow-style: none;
   font-family: "Cormorant", serif;
   font-optical-sizing: auto;
-  overflow: hidden;
+  /* overflow: hidden; */
   overscroll-behavior: none;
   scroll-behavior: smooth;
 }
