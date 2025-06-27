@@ -1,8 +1,19 @@
 /* Reset and basic styling */
+html {
+  scroll-snap-type: y mandatory;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.page img,
+.page video {
+  pointer-events: none;
+  object-fit: cover;
+  filter: brightness(80%);
 }
 
 body,
@@ -14,17 +25,18 @@ html {
   overflow: auto;
   overscroll-behavior: none;
   scroll-behavior: auto;
-  will-change: transform;
+}
+
+.bg-cover {
+  background-size: cover;
 }
 
 .fade-in {
   transition: opacity 1s ease;
   opacity: 1;
-  will-change: opacity;
 }
 .fade-out {
   opacity: 0;
-  will-change: opacity;
 }
 
 .page {
@@ -36,6 +48,7 @@ html {
   flex-direction: column;
   justify-content: center;
   visibility: visible;
+  scroll-snap-align: start;
 }
 
 .page img,
@@ -59,9 +72,9 @@ html {
   object-fit: cover;
 }
 .page0-intro-video {
-  width: 50%;
-  height: 100px;
-  max-width: 300px;
+  width: 30%;
+  height: 50%;
+  max-width: 50%;
   display: block;
   margin: 0 auto;
 }
@@ -81,38 +94,7 @@ body.stop-scroll {
   height: 100px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.dot-loader {
-  font-size: 20px;
-  text-align: center;
-}
-
-.dot-loader::after {
-  content: ".";
-  animation: dots 1s steps(5, end) infinite;
-}
-
-@keyframes dots {
-  0% {
-    content: ".";
-  }
-  20% {
-    content: "..";
-  }
-  40% {
-    content: "...";
-  }
-  60% {
-    content: "....";
-  }
-  80% {
-    content: ".....";
-  }
-  100% {
-    content: ".";
-  }
+  /* background-size: cover; */
 }
 
 .page1 {
@@ -124,7 +106,7 @@ body.stop-scroll {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-size: cover;
+  /* background-size: cover; */
   color: white;
   width: 100%;
   justify-content: space-around;
@@ -138,7 +120,7 @@ body.stop-scroll {
   height: 100vh;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
 }
 
 .page1-header {
@@ -201,7 +183,7 @@ body.stop-scroll {
   align-items: center;
   justify-content: end;
   text-align: justify;
-  background-size: cover;
+  /* background-size: cover; */
   transition: opacity 2s ease;
 
   overflow: hidden;
@@ -211,12 +193,12 @@ body.stop-scroll {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 
@@ -246,7 +228,7 @@ body.stop-scroll {
 .page3 {
   overflow: hidden;
   display: flex;
-  background-size: cover;
+  /* background-size: cover; */
   color: white;
   justify-content: end;
   gap: 1rem;
@@ -255,12 +237,12 @@ body.stop-scroll {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page3-groom-name {
@@ -295,9 +277,9 @@ body.stop-scroll {
 }
 
 .page4 {
-  background-size: cover;
+  /* background-size: cover; */
   display: flex;
-  background-size: cover;
+  /* background-size: cover; */
   color: white;
   justify-content: end;
   overflow: hidden;
@@ -307,12 +289,12 @@ body.stop-scroll {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page4-bride-name {
@@ -347,10 +329,10 @@ body.stop-scroll {
 }
 
 .page5 {
-  background-size: cover;
+  /* background-size: cover; */
   overflow: hidden;
   display: flex;
-  background-size: cover;
+  /* background-size: cover; */
   color: white;
   justify-content: start;
   gap: 0.5rem;
@@ -359,12 +341,12 @@ body.stop-scroll {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 120vh;
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 
@@ -374,9 +356,9 @@ body.stop-scroll {
 }
 
 .page6 {
-  background-size: cover;
+  /* background-size: cover; */
   display: flex;
-  background-size: cover;
+  /* background-size: cover; */
   color: white;
   justify-content: center;
   align-items: center;
@@ -387,12 +369,12 @@ body.stop-scroll {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page6-save-our-date {
@@ -438,10 +420,10 @@ body.stop-scroll {
 }
 
 .page7 {
-  background-size: cover;
+  /* background-size: cover; */
   display: flex;
   overflow: hidden;
-  background-size: cover;
+  /* background-size: cover; */
   color: white;
   justify-content: center;
   align-items: center;
@@ -451,12 +433,12 @@ body.stop-scroll {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page7-header {
@@ -498,9 +480,9 @@ body.stop-scroll {
 }
 
 .page8 {
-  background-size: cover;
+  /* background-size: cover; */
   display: flex;
-  background-size: cover;
+  /* background-size: cover; */
   overflow: hidden;
   background-position: 60% 20%;
   color: white;
@@ -511,7 +493,7 @@ body.stop-scroll {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
@@ -563,9 +545,9 @@ button {
 
 /* Page 9 */
 .page9 {
-  background-size: cover;
+  /* background-size: cover; */
   display: flex;
-  background-size: cover;
+  /* background-size: cover; */
   background-position: 60% 20%;
   color: white;
   overflow: hidden;
@@ -576,12 +558,12 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page9-pagination-control-buttons {
@@ -626,9 +608,9 @@ button {
 
 /* Page 10 */
 .page10 {
-  background-size: cover;
+  /* background-size: cover; */
   display: flex;
-  background-size: cover;
+  /* background-size: cover; */
   background-position: 60% 20%;
   color: white;
   justify-content: start;
@@ -639,12 +621,12 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  width: 110%;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
   pointer-events: none;
 }
 .page10-bank-card {
@@ -785,7 +767,7 @@ p {
   object-fit: cover;
   opacity: 0;
   transition: opacity 1s ease;
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
 }
 
 .carousel img.active {

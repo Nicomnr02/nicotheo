@@ -500,54 +500,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     preloadImages(bgImagePage11).then(() => {
-      window.addEventListener("DOMContentLoaded", () => {
-        const images = document.querySelectorAll(".carousel img");
-        const prevBtn = document.querySelector(".prev");
-        const nextBtn = document.querySelector(".next");
-        const modal = document.getElementById("previewModal");
-        const previewImage = document.getElementById("previewImage");
-        const downloadBtn = document.getElementById("downloadBtn");
-        const counter = document.getElementById("counter");
+      const images = document.querySelectorAll(".carousel img");
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+      const modal = document.getElementById("previewModal");
+      const previewImage = document.getElementById("previewImage");
+      const downloadBtn = document.getElementById("downloadBtn");
+      const counter = document.getElementById("counter");
 
-        let current = 0;
+      let current = 0;
 
-        function updateCounter() {
-          counter.innerHTML = `${current + 1} / ${images.length}<br><br>Hold to download`;
-        }
+      function updateCounter() {
+        counter.innerHTML = `${current + 1} / ${images.length}<br><br>Hold to download`;
+      }
 
-        function showImage(index) {
-          images.forEach((img) => img.classList.remove("active"));
-          images[index].classList.add("active");
-          updateCounter();
-        }
+      function showImage(index) {
+        images.forEach((img) => img.classList.remove("active"));
+        images[index].classList.add("active");
+        updateCounter();
+      }
 
-        prevBtn.addEventListener("click", () => {
-          current = (current - 1 + images.length) % images.length;
-          showImage(current);
-        });
-
-        nextBtn.addEventListener("click", () => {
-          current = (current + 1) % images.length;
-          showImage(current);
-        });
-
-        images.forEach((img) => {
-          img.addEventListener("click", () => {
-            previewImage.src = img.src;
-            downloadBtn.href = img.src;
-            modal.style.display = "flex";
-          });
-        });
-
-        window.closeModal = function () {
-          modal.style.display = "none";
-          previewImage.src = "";
-        };
-
+      prevBtn.addEventListener("click", () => {
+        current = (current - 1 + images.length) % images.length;
         showImage(current);
       });
+
+      nextBtn.addEventListener("click", () => {
+        current = (current + 1) % images.length;
+        showImage(current);
+      });
+
+      images.forEach((img) => {
+        img.addEventListener("click", () => {
+          previewImage.src = img.src;
+          downloadBtn.href = img.src;
+          modal.style.display = "flex";
+        });
+      });
+
+      window.closeModal = function () {
+        modal.style.display = "none";
+        previewImage.src = "";
+      };
+
+      showImage(current);
     });
-    preloadImages(bgImagePage12).then(() => {});
-    preloadImages(bgImagePage14).then(() => {});
   });
+  preloadImages(bgImagePage12).then(() => {});
+  preloadImages(bgImagePage14).then(() => {});
 });
