@@ -70,8 +70,9 @@ html {
   pointer-events: none;
 }
 
-.no-scroll {
-  overflow-y: hidden;
+body.stop-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 
 .page0-image-spinner {

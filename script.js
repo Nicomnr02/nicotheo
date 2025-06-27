@@ -11,73 +11,18 @@ const lenis = new Lenis({
   smoothTouch: true,
   lerp: 0.05,
   normalizeScroll: true,
-
-  snap: true,
 });
 
-/* lenis.stop();
- */
+document.body.classList.add("stop-scroll");
+lenis.stop();
+
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
 
-function enableScrollSnap() {
-  // const pages = gsap.utils.toArray(".page");
-  // const totalPages = pages.length;
-  // ScrollTrigger.scrollerProxy(document.body, {
-  //   scrollTop(value) {
-  //     return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll.instance.scroll.y;
-  //   },
-  //   getBoundingClientRect() {
-  //     return {
-  //       top: 0,
-  //       left: 0,
-  //       width: window.innerWidth,
-  //       height: window.innerHeight,
-  //     };
-  //   },
-  // });
-  // lenis.on("scroll", ScrollTrigger.update);
-  // setTimeout(() => {
-  //   ScrollTrigger.create({
-  //     trigger: document.body,
-  //     start: "top top",
-  //     end: "bottom bottom",
-  //     snap: {
-  //       snapTo: (progress) => {
-  //         const snappedIndex = Math.round(progress * (totalPages - 1));
-  //         const targetOffset = pages[snappedIndex].offsetTop;
-  //         return targetOffset;
-  //       },
-  //       duration: 1.2,
-  //       ease: "expo.out",
-  //       delay: 0.1,
-  //     },
-  //     // optional
-  //     // markers: true
-  //   });
-  //   ScrollTrigger.refresh();
-  // }, 100);
-}
-
-gsap.utils.toArray(".fade-target").forEach((target) => {
-  gsap.fromTo(
-    target,
-    { opacity: 0, y: 20 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: target,
-        start: "top 80%", // bisa disesuaikan
-        toggleActions: "play none none none",
-      },
-    }
-  );
-});
+function enableScrollSnap() {}
 
 // collect assets
 let carouselImagePage0 = [];
@@ -215,30 +160,37 @@ async function GetAssets() {
   }
 }
 function Fade(id) {
-  // const container = document.getElementById(id);
-  // if (!container) {
-  //   console.warn(`Fade: element with id "${id}" not found.`);
-  //   return;
-  // }
-  // const observer = new IntersectionObserver(
-  //   (entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         container.classList.remove("fade-in");
-  //         container.classList.add("fade-out");
-  //         setTimeout(() => {
-  //           container.classList.remove("fade-out");
-  //           container.classList.add("fade-in");
-  //         }, 500);
-  //       }
-  //     });
-  //   },
-  //   {
-  //     threshold: 0.3,
-  //   }
-  // );
-  // observer.observe(container);
+  const container = document.getElementById(id);
+  if (!container) {
+    console.warn(`Fade: element with id "${id}" not found.`);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          container.classList.remove("fade-in");
+          container.classList.add("fade-out");
+
+          setTimeout(() => {
+            container.classList.remove("fade-out");
+            container.classList.add("fade-in");
+          }, 500);
+
+          // 👇 Stop observing after the first trigger
+          obs.unobserve(container);
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    }
+  );
+
+  observer.observe(container);
 }
+
 function downloadICS() {
   const title = "Nicolas & Theofani Wedding Celebration";
   const description = "Join us for our special day!";
@@ -352,8 +304,9 @@ _assets.then(() => {
     button.disabled = true;
     button.textContent = "Scroll Down ⬇";
 
-/*     lenis.start();
- */
+    lenis.start();
+    document.body.classList.remove("stop-scroll");
+
     const audioPlayer = document.getElementById("page1-footer-audio-player");
     audioPlayer.src = bgMusic;
     console.log("bgmusic: ", bgMusic);
