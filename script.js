@@ -13,9 +13,6 @@ const lenis = new Lenis({
   normalizeScroll: true,
 });
 
-document.body.classList.add("stop-scroll");
-lenis.stop();
-
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -120,44 +117,37 @@ async function FetchAsset() {
   }
 }
 async function GetAssets() {
-  const expiredKey = "nico-fani-wedding-assets-expired-time";
-  const assetsKey = "nico-fani-wedding-assets-last-retrieving";
-
-  const now = new Date();
-  const newExpiredTime = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString();
-
-  const refreshAsset = async () => {
-    const data = await FetchAsset();
-    if (data) {
-      localStorage.setItem(assetsKey, JSON.stringify(data));
-    }
-    return data;
-  };
-
-  const refreshExpired = () => {
-    localStorage.setItem(expiredKey, newExpiredTime);
-  };
-
-  let expiredTime = localStorage.getItem(expiredKey);
-  if (!expiredTime) {
-    expiredTime = newExpiredTime;
-    refreshExpired();
-  }
-
-  let assets = localStorage.getItem(assetsKey);
-  const hasExpired = new Date(expiredTime) <= now;
-
-  if (!assets || hasExpired) {
-    refreshExpired();
-    return await refreshAsset();
-  }
-
-  try {
-    return JSON.parse(assets);
-  } catch (err) {
-    console.error("Failed to parse local asset data:", err);
-    return await refreshAsset();
-  }
+  // const expiredKey = "nico-fani-wedding-assets-expired-time";
+  // const assetsKey = "nico-fani-wedding-assets-last-retrieving";
+  // const now = new Date();
+  // const newExpiredTime = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString();
+  // const refreshAsset = async () => {
+  //   const data = await FetchAsset();
+  //   if (data) {
+  //     localStorage.setItem(assetsKey, JSON.stringify(data));
+  //   }
+  //   return data;
+  // };
+  // const refreshExpired = () => {
+  //   localStorage.setItem(expiredKey, newExpiredTime);
+  // };
+  // let expiredTime = localStorage.getItem(expiredKey);
+  // if (!expiredTime) {
+  //   expiredTime = newExpiredTime;
+  //   refreshExpired();
+  // }
+  // let assets = localStorage.getItem(assetsKey);
+  // const hasExpired = new Date(expiredTime) <= now;
+  // if (!assets || hasExpired) {
+  //   refreshExpired();
+  //   return await refreshAsset();
+  // }
+  // try {
+  //   return JSON.parse(assets);
+  // } catch (err) {
+  //   console.error("Failed to parse local asset data:", err);
+  //   return await refreshAsset();
+  // }
 }
 function Fade(id) {
   const container = document.getElementById(id);
@@ -192,39 +182,45 @@ function Fade(id) {
 }
 
 function downloadICS() {
-  const title = "Nicolas & Theofani Wedding Celebration";
-  const description = "Join us for our special day!";
-  const location = "Tanjungbalai Asahan, Sumatera Utara";
-  const startDate = "20250708T000000Z";
-  const endDate = "20250708T130000Z";
-
+  console.log("lcliclciclcicliclil");
   const icsContent = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//YourOrganization//EN",
     "BEGIN:VEVENT",
-    "UID:" + new Date().getTime() + "@nicotheoweddinginvitation.netlify.app",
-    "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z",
-    "DTSTART:" + startDate,
-    "DTEND:" + endDate,
-    "SUMMARY:" + title,
-    "DESCRIPTION:" + description,
-    "LOCATION:" + location,
+    "DTSTART:20250708T000000Z",
+    "DTEND:20250708T130000Z",
+    "SUMMARY:Nicolas & Theofani Wedding Celebration",
+    "DESCRIPTION:Join us for our special day!",
+    "LOCATION:Tanjungbalai Asahan, Sumatera Utara",
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
 
-  const blob = new Blob([icsContent], { type: "text/calendar" });
+  const bom = new Uint8Array([0xef, 0xbb, 0xbf]); // optional UTF-8 BOM
+  const blob = new Blob([bom, icsContent], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+
   const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
+  link.href = url;
   link.download = "nicotheoweddingcelebrationday.ics";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
 }
 function copyCardNumber(cardElement) {
   const numberElement = cardElement.querySelector(".number");
   const number = numberElement.innerText;
+  console.log(numberElement != null ? "card not null" : "card null");
   navigator.clipboard
     .writeText(number)
     .then(() => {
@@ -234,14 +230,9 @@ function copyCardNumber(cardElement) {
       console.error("Could not copy text: ", err);
     });
 }
-function showToast(message) {
-  const toast = document.getElementById("toast");
-  toast.textContent = message;
-  toast.classList.add("show");
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
-}
+
+document.body.classList.add("stop-scroll");
+lenis.stop();
 
 // main
 const _assets = (async () => {
