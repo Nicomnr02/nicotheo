@@ -11,7 +11,8 @@ const lenis = new Lenis({
   gestureDirection: "vertical",
   smoothTouch: false,
   lerp: 0.08,
-  normalizeWheel: true,
+  enableScrollSnap: true,
+  // normalizeWheel: true,
 });
 
 function raf(time) {
