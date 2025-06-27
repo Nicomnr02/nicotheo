@@ -21,13 +21,13 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.defaults({
-  markers: false,
-  ease: "power1.inOut",
-  scrub: 1,
-});
+// ScrollTrigger.defaults({
+//   markers: false,
+//   ease: "power1.inOut",
+//   scrub: 1,
+// });
 
 function enableScrollSnap() {
   // Snap ke setiap section
@@ -307,8 +307,8 @@ document.addEventListener("DOMContentLoaded", () => {
       button.disabled = true;
       button.textContent = "Scroll Down ⬇";
 
-      lenis.start();
       document.body.classList.remove("stop-scroll");
+      lenis.start();
 
       const audioPlayer = document.getElementById("page1-footer-audio-player");
       audioPlayer.src = bgMusic;
