@@ -900,3 +900,13 @@ p {
   height: 130%;
   aspect-ratio: 16 / 9;
 }
+
+.page13 {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://nicomnr02.github.io/invitation-asset/14. Thanking Photo/1.jpeg") no-repeat center center;
+  background-size: cover;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  display: flex;
+  gap: 2rem;
+}
