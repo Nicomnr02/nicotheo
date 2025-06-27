@@ -30,9 +30,9 @@ ScrollTrigger.defaults({
 
 function enableScrollSnap() {
   // Snap ke setiap section
-  ScrollTrigger.create({
-    snap: 1 / document.querySelectorAll(".page").length,
-  });
+  // ScrollTrigger.create({
+  //   snap: 1 / document.querySelectorAll(".page").length,
+  // });
 }
 
 // collect assets
