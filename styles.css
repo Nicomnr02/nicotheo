@@ -132,12 +132,12 @@ body.stop-scroll {
 .page1-bg-video {
   position: fixed;
   min-width: 100%;
-  min-height: 100vh;
+  min-height: 99vh;
   width: 100%;
   height: 100vh;
   object-fit: cover;
   z-index: -2;
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
 }
 
 .page1-header {
@@ -215,7 +215,7 @@ body.stop-scroll {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 
@@ -259,7 +259,7 @@ body.stop-scroll {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 .page3-groom-name {
@@ -311,7 +311,7 @@ body.stop-scroll {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 .page4-bride-name {
@@ -363,7 +363,7 @@ body.stop-scroll {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 
@@ -391,7 +391,7 @@ body.stop-scroll {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 .page6-save-our-date {
@@ -455,7 +455,7 @@ body.stop-scroll {
   object-fit: cover;
   z-index: -1;
   object-position: 30% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 .page7-header {
@@ -515,7 +515,7 @@ body.stop-scroll {
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(70%);
   pointer-events: none;
 }
 .page8-form {
@@ -580,7 +580,7 @@ button {
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 .page9-pagination-control-buttons {
@@ -643,7 +643,7 @@ button {
   object-fit: cover;
   z-index: -1;
   object-position: 60% center; /* <--- move left or right */
-  /* filter: brightness(80%); */
+  filter: brightness(80%);
   pointer-events: none;
 }
 .page10-bank-card {
@@ -870,7 +870,7 @@ p {
 
 .page12 {
   display: flex;
-  background: url("https://nicomnr02.github.io/invitation-asset/12. Prewedding Collection Photos/7.webp") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://nicomnr02.github.io/invitation-asset/12. Prewedding Collection Photos/7.webp") no-repeat center center;
   background-size: cover;
   justify-content: center;
   gap: 5rem;
