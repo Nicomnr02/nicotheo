@@ -6,8 +6,7 @@
   box-sizing: border-box;
 }
 
-.page img,
-.page video {
+.page img {
   pointer-events: none;
   object-fit: cover;
   filter: brightness(80%);
@@ -659,9 +658,9 @@ button {
 }
 .card {
   width: 20rem;
-  height: 30vh;
+  height: 28vh;
   border-radius: 15px;
-  background: linear-gradient(135deg, #a2badf43, #6a8aaa);
+  background: linear-gradient(135deg, #6a8aaa, #a2badf43);
   color: white;
   padding: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -751,6 +750,7 @@ p {
   position: relative;
   width: 100%;
   overflow: hidden;
+  background-color: whitesmoke;
 }
 
 .carousel-counter {
@@ -877,6 +877,7 @@ p {
   z-index: 1;
   width: 100%;
   background: transparent;
+  pointer-events: auto;
 }
 
 .video-container iframe {
