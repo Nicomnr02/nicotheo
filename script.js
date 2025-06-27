@@ -5,13 +5,13 @@ const imageCache = {};
 // Initially block scroll
 
 const lenis = new Lenis({
-  duration: 0.5,
+  duration: 1.2,
   smooth: true,
   direction: "vertical",
   gestureDirection: "vertical",
-  smoothTouch: true,
-  lerp: 0.05,
-  normalizeScroll: true,
+  smoothTouch: false,
+  lerp: 0.08,
+  normalizeWheel: true,
 });
 
 function raf(time) {
@@ -20,7 +20,20 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-function enableScrollSnap() {}
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.defaults({
+  markers: false,
+  ease: "power1.inOut",
+  scrub: 1,
+});
+
+function enableScrollSnap() {
+  // Snap ke setiap section
+  ScrollTrigger.create({
+    snap: 1 / document.querySelectorAll(".page").length,
+  });
+}
 
 // collect assets
 let carouselImagePage0 = [];
@@ -233,6 +246,7 @@ function copyCardNumber(cardElement) {
 }
 
 document.body.classList.add("stop-scroll");
+
 lenis.stop();
 
 // main
