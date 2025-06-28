@@ -275,6 +275,36 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }, 4500);
 
+    // PAGE 1 VIDEO SCROLL-CONTROL
+    const section = document.querySelector("#carousel-page-1");
+    const video = section.querySelector("video");
+
+    // Set src dari API jika perlu
+    if (page1Video) {
+      const videoSource = video.querySelector("source");
+      videoSource.src = page1Video;
+      video.load(); // penting agar src baru diload
+    }
+
+    video.pause(); // Awal: jangan langsung play
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    observer.observe(section);
+
     // PAGE 1
     const urlParams = new URLSearchParams(window.location.search);
     const paramGuestName = urlParams.get("guest_name");
