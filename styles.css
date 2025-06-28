@@ -55,6 +55,7 @@ html {
   flex-direction: column;
   justify-content: center;
   visibility: visible;
+  contain: layout paint; /* ✅ Optimize scroll performance */
   /* scroll-snap-align: start; */
 }
 
