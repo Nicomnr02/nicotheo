@@ -21,14 +21,6 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// gsap.registerPlugin(ScrollTrigger);
-
-// ScrollTrigger.defaults({
-//   markers: false,
-//   ease: "power1.inOut",
-//   scrub: 1,
-// });
-
 function enableScrollSnap() {
   // Snap ke setiap section
   // ScrollTrigger.create({
