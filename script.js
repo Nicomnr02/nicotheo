@@ -157,35 +157,22 @@ async function GetAssets() {
   }
 }
 function Fade(id) {
-  const container = document.getElementById(id);
-  if (!container) {
-    console.warn(`Fade: element with id "${id}" not found.`);
-    return;
-  }
+  const el = document.getElementById(id);
+  if (!el) return;
 
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          container.classList.remove("fade-in");
-          container.classList.add("fade-out");
-
-          setTimeout(() => {
-            container.classList.remove("fade-out");
-            container.classList.add("fade-in");
-          }, 500);
-
-          // 👇 Stop observing after the first trigger
-          obs.unobserve(container);
+          el.classList.add("visible");
+          obs.unobserve(el); // Stop observing after first entry
         }
       });
     },
-    {
-      threshold: 0.3,
-    }
+    { threshold: 0.3 }
   );
 
-  observer.observe(container);
+  observer.observe(el);
 }
 
 function downloadICS() {
@@ -553,6 +540,8 @@ document.addEventListener("DOMContentLoaded", () => {
       showImage(current);
     });
   });
-  preloadImages(bgImagePage12).then(() => {});
+  preloadImages(bgImagePage12).then(() => {
+    Fade("page12-header-fade-target");
+  });
   preloadImages(bgImagePage14).then(() => {});
 });
