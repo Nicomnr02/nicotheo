@@ -5,14 +5,10 @@ const imageCache = {};
 // Initially block scroll
 
 const lenis = new Lenis({
-  duration: 1,
+  duration: 1.2,
   smooth: true,
-  // direction: "vertical",
-  // gestureDirection: "vertical",
-  smoothTouch: true,
-  lerp: 0.08,
-  enableScrollSnap: true,
-  normalizeWheel: true,
+  smoothTouch: false,
+  lerp: 0.1,
 });
 
 function raf(time) {
