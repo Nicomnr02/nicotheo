@@ -227,11 +227,11 @@ function copyCardNumber(cardElement) {
 
 document.body.classList.add("stop-scroll");
 
-lenis.stop();
-
 // main
 document.addEventListener("DOMContentLoaded", () => {
   const _assets = (async () => {
+    lenis.stop();
+
     const assets = await GetAssets();
     if (!assets) return;
     if (assets.carousel_image_page_0) carouselImagePage0.push(...assets.carousel_image_page_0);
