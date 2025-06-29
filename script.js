@@ -1,5 +1,12 @@
 /* BEHAVIORS */
 
+const [navEntry] = performance.getEntriesByType("navigation");
+if (navEntry?.type === "reload" && !sessionStorage.getItem("alreadyReloaded")) {
+  sessionStorage.setItem("alreadyReloaded", "true");
+  console.log("📲 Detected refresh. You can handle logic here.");
+  location.reload(); // enable if you want a forced reload, but be careful!
+}
+
 const imageCache = {};
 
 // Initially block scroll
@@ -16,6 +23,8 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
+
+lenis.stop();
 
 function enableScrollSnap() {
   // Snap ke setiap section
@@ -226,8 +235,6 @@ document.body.classList.add("stop-scroll");
 // main
 document.addEventListener("DOMContentLoaded", () => {
   const _assets = (async () => {
-    lenis.stop();
-
     const assets = await GetAssets();
     if (!assets) return;
     if (assets.carousel_image_page_0) carouselImagePage0.push(...assets.carousel_image_page_0);
@@ -253,23 +260,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const page0 = document.getElementById("intro");
     const loadingText = document.getElementById("page0-loading-text");
-    let percent = 0;
-    const percentInterval = setInterval(() => {
-      percent++;
-      if (loadingText) {
-        loadingText.textContent = `${percent}%`;
-      }
-      if (percent >= 100) clearInterval(percentInterval);
-    }, 30);
+    const video1 = page0.querySelector("video"); // define this!
 
-    setTimeout(() => {
-      page0.classList.add("page0-hidden");
+    video1.addEventListener("canplaythrough", () => {
+      console.log("letss gooo");
+      let percent = 0;
+      const percentInterval = setInterval(() => {
+        percent++;
+        if (loadingText) {
+          loadingText.textContent = `${percent}%`;
+        }
+        if (percent >= 100) clearInterval(percentInterval);
+      }, 30);
+
       setTimeout(() => {
-        page0.style.display = "none";
-        enableScrollSnap();
-        console.log("🚀 Page0 hidden");
-      }, 1000);
-    }, 4500);
+        page0.classList.add("page0-hidden");
+        setTimeout(() => {
+          page0.style.display = "none";
+          enableScrollSnap();
+          console.log("🚀 Page0 hidden");
+        }, 1000);
+      }, 4500);
+    });
 
     // PAGE 1 VIDEO SCROLL-CONTROL
     const section = document.querySelector("#carousel-page-1");
