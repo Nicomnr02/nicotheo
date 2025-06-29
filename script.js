@@ -3,7 +3,6 @@
 const [navEntry] = performance.getEntriesByType("navigation");
 if (navEntry?.type === "reload" && !sessionStorage.getItem("alreadyReloaded")) {
   sessionStorage.setItem("alreadyReloaded", "true");
-  console.log("📲 Detected refresh. You can handle logic here.");
   location.reload(); // enable if you want a forced reload, but be careful!
 }
 
@@ -475,11 +474,21 @@ document.addEventListener("DOMContentLoaded", () => {
           const card = document.createElement("div");
           card.className = `wish-card ${index % 2 === 0 ? "left" : "right"}`;
           card.innerHTML = `
-      <h3 class="single-line-ellipsis">${item.name}</h3>
-      <p class="wish-text">${item.wish}</p>
-      <p class="wish-date">${new Date(item.created_at * 1000).toLocaleString()}</p>
-    `;
+          <h3 class="single-line-ellipsis">${item.name}</h3>
+          <p class="wish-text">${item.wish.length > 150 ? item.wish.slice(0, 150) + "..." : item.wish}</p>
+          ${item.wish.length > 150 ? `<button class="see-detail-button ${index % 2 === 0 ? "left" : "right"}" data-wish="${encodeURIComponent(item.wish)}">See Detail</button>` : ""}
+          <p class="wish-date">${new Date(item.created_at * 1000).toLocaleString()}</p>
+        `;
           wishesContainer.appendChild(card);
+        });
+
+        const seeDetailButtons = document.querySelectorAll(".see-detail-button");
+        seeDetailButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const fullWish = decodeURIComponent(btn.getAttribute("data-wish"));
+            document.getElementById("popupContent").textContent = fullWish;
+            document.getElementById("popupOverlay").style.display = "flex";
+          });
         });
 
         if (currentPage == 0) {
@@ -522,6 +531,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         observer.observe(wishesPage);
       }
+
+      const openBtn = document.getElementById("openPopup");
+      const popupOverlay = document.getElementById("popupOverlay");
+      const closeBtn = document.querySelector(".close-popup");
+
+      openBtn.addEventListener("click", () => {
+        popupOverlay.style.display = "flex";
+      });
+
+      closeBtn.addEventListener("click", () => {
+        popupOverlay.style.display = "none";
+      });
+
+      // Optional: klik di luar popup juga menutup
+      popupOverlay.addEventListener("click", (e) => {
+        if (e.target === popupOverlay) {
+          popupOverlay.style.display = "none";
+        }
+      });
     });
 
     preloadImages(bgImagePage10).then(() => {

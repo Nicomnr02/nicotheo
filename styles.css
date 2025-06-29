@@ -617,6 +617,52 @@ button {
   width: 200px;
 }
 
+.see-detail-button {
+  background: none;
+}
+.see-detail-button.left {
+  align-self: flex-start;
+  margin-left: 0;
+  text-align: left;
+}
+.see-detail-button.right {
+  align-self: flex-end;
+  margin-right: 0;
+  text-align: right;
+}
+.popup-overlay {
+  display: none; /* awalnya disembunyikan */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+  max-width: 400px;
+  text-align: center;
+}
+.close-popup {
+  position: absolute;
+  top: 0.2vh;
+  left: 75%;
+  font-size: larger;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: #888888;
+  color: white;
+  width: 20%;
+  height: 5vh;
+  cursor: pointer;
+}
 /* Page 10 */
 .page10 {
   /* background-size: cover; */
