@@ -15,7 +15,8 @@ const lenis = new Lenis({
   duration: 1.2,
   smooth: true,
   smoothTouch: false,
-  lerp: 0.1,
+  lerp: 0.08,
+  enableScrollSnap: true,
 });
 
 function raf(time) {
