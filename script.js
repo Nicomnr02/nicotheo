@@ -283,6 +283,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 4500);
     });
 
+    setTimeout(() => {
+      if (!hasLoadedData) {
+        console.warn("⚠️ loadeddata tidak terpanggil, fallback aktif");
+
+        page0.classList.add("page0-hidden");
+        setTimeout(() => {
+          page0.style.display = "none";
+          enableScrollSnap();
+        }, 1000);
+      }
+    }, 8000);
+
     // PAGE 1 VIDEO SCROLL-CONTROL
     const section = document.querySelector("#carousel-page-1");
     const video = section.querySelector("video");
