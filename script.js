@@ -262,8 +262,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadingText = document.getElementById("page0-loading-text");
     const video1 = page0.querySelector("video"); // define this!
 
+    video1.addEventListener("loadedmetadata", () => {
+      console.log("✅ Metadata siap");
+      loadingText.textContent = `Almost there..`;
+    });
+
+    let hasLoadedData = false;
     video1.addEventListener("loadeddata", () => {
-      console.log("letss gooo");
+      console.log("loadedata siap");
+      hasLoadedData = true;
       let percent = 0;
       const percentInterval = setInterval(() => {
         percent++;
@@ -286,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       if (!hasLoadedData) {
         console.warn("⚠️ loadeddata tidak terpanggil, fallback aktif");
-
+        loadingText.textContent = `Here you go!`;
         page0.classList.add("page0-hidden");
         setTimeout(() => {
           page0.style.display = "none";
