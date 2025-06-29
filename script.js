@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadingText = document.getElementById("page0-loading-text");
     const video1 = page0.querySelector("video"); // define this!
 
-    video1.addEventListener("canplaythrough", () => {
+    video1.addEventListener("loadeddata", () => {
       console.log("letss gooo");
       let percent = 0;
       const percentInterval = setInterval(() => {
